@@ -12,7 +12,7 @@ export const roles: Role[] = [
     title: "M-PESA Holding Governance Lead",
     company: "Safaricom PLC",
     location: "Nairobi, Kenya",
-    period: "May 2026 — present",
+    period: "May 2026 — September 2026",
     summary:
       "Leading governance and continuous improvement for M-PESA Holding Company, working across Legal, Risk, Compliance, Internal Audit and the wider business.",
     highlights: [
