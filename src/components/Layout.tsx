@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import profilePhoto from '../assets/profile-avatar.jpg';
 import { profile } from '../data/profile';
 import { getCaseStudy } from '../data/caseStudies';
+import { getPost } from '../data/posts';
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -10,6 +11,7 @@ const navItems = [
   { to: '/how-i-work', label: 'How I Work' },
   { to: '/about', label: 'About' },
   { to: '/experience', label: 'Experience' },
+  { to: '/writing', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -19,12 +21,16 @@ const routeTitles: Record<string, string> = {
   '/how-i-work': 'How I work',
   '/about': 'About',
   '/experience': 'Experience',
+  '/writing': 'Blog',
   '/contact': 'Contact',
 };
 
 function pageTitle(pathname: string) {
   if (pathname.startsWith('/projects/')) {
     return getCaseStudy(pathname.slice('/projects/'.length))?.title ?? 'Page not found';
+  }
+  if (pathname.startsWith('/writing/')) {
+    return getPost(pathname.slice('/writing/'.length))?.title ?? 'Page not found';
   }
   return routeTitles[pathname] ?? 'Page not found';
 }
