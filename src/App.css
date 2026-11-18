@@ -1207,6 +1207,70 @@ a:focus-visible {
   color: var(--muted);
 }
 
+/* Blog */
+.post {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-header h2 {
+  margin: 1rem 0 0.25rem;
+}
+
+.post-subtitle {
+  font-size: 1.15rem;
+  color: var(--teal-dark);
+  margin: 0 0 0.75rem;
+}
+
+.post-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.post-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  background-color: var(--surface);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+}
+
+.post-video {
+  margin: 2rem 0;
+}
+
+.post-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: var(--navy);
+}
+
+.post-video figcaption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.post-body p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.post-body .artefact img {
+  width: auto;
+  max-width: 100%;
+  max-height: 32rem;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Declared last so accent sections override the default case-study heading colour. */
 .section--accent h2,
 .section--accent h3,
