@@ -20,11 +20,7 @@ export default function WritingPost() {
           <h2>{post.title}</h2>
           <p className="post-subtitle">{post.subtitle}</p>
           <p className="post-meta">
-            {post.author}
-            <br />
-            {post.module}
-            <br />
-            {post.institution}
+            {post.module} &middot; {post.institution}
           </p>
         </header>
 

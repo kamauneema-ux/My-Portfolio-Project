@@ -20,7 +20,6 @@ export type Post = {
   slug: string;
   title: string;
   subtitle: string;
-  author: string;
   module: string;
   institution: string;
   summary: string;
@@ -33,9 +32,8 @@ export const posts: Post[] = [
     slug: "creating-our-perfume-advertisement",
     title: "Creating Our Perfume Advertisement",
     subtitle: "Personal Reflection on Video Production",
-    author: "Grace Muthoni Kamau",
-    module: "CS6041 · Interactive Media Project/Workshop 1",
-    institution: "University of Limerick · Academic Year 2026/2027",
+    module: "MSc coursework · Interactive Media",
+    institution: "University of Limerick, 2026",
     summary:
       "A group video production: a comedic perfume advertisement about a wife who investigates an unfamiliar scent. My reflection on ideation, turning my home into a set, acting, and what I would do differently.",
     video: {
