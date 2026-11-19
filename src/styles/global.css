@@ -149,8 +149,8 @@ main:focus,
 }
 
 /* ---------- Call-to-action link ----------
- * Every "View … case study" style action looks the same,
- * and hover changes three things at once so the feedback is unmistakable.
+ * Every "View … case study" style action looks the same, for consistency.
+ * Hover adds a gold border, gold underline and a slight lift; the text colour stays put.
  */
 .cta {
   display: inline-block;
@@ -162,15 +162,16 @@ main:focus,
   font-weight: 700;
   text-decoration: none;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 }
 
 .cta:hover {
-  background: var(--hover);
-  border-color: var(--hover);
-  color: var(--navy);
-  text-decoration: underline;
+  border-color: var(--gold);
+  box-shadow: 0 4px 0 var(--gold);
+  transform: translateY(-2px);
+  text-decoration: underline 2px var(--gold);
 }
 
 /* ---------- Header and navigation ---------- */
@@ -223,8 +224,7 @@ main:focus,
 }
 
 .site-nav__links a:hover {
-  color: var(--hover);
-  border-bottom-color: currentColor;
+  border-bottom-color: var(--gold-on-dark);
 }
 
 .site-nav__toggle {
@@ -326,9 +326,10 @@ main:focus,
 }
 
 .contact-link:hover {
-  background: var(--hover);
-  border-color: var(--hover);
-  color: var(--navy);
+  border-color: var(--gold-on-dark);
+  box-shadow: 0 0 0 2px var(--gold-on-dark);
+  text-decoration: underline 2px var(--gold-on-dark);
+  text-underline-offset: 0.3em;
 }
 
 .site-footer__legal {
@@ -387,8 +388,8 @@ main:focus,
 }
 
 .zoom-figure__trigger:hover {
-  border-color: var(--hover);
-  box-shadow: 0 0 0 3px var(--hover);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold);
 }
 
 .zoom-figure__trigger:hover .zoom-figure__hint,
@@ -397,8 +398,7 @@ main:focus,
 }
 
 .zoom-figure__trigger:hover .zoom-figure__hint {
-  background: var(--hover);
-  color: var(--navy);
+  box-shadow: inset 0 0 0 2px var(--gold-on-dark);
 }
 
 .zoom-figure figcaption {
@@ -467,13 +467,11 @@ main:focus,
 }
 
 .zoom-viewer__bar a:hover {
-  color: var(--hover);
+  text-decoration: underline 2px var(--gold-on-dark);
 }
 
 .zoom-viewer__close:hover {
-  background: var(--hover);
-  border-color: var(--hover);
-  color: var(--navy);
+  border-color: var(--gold-on-dark);
 }
 
 .zoom-viewer__canvas {
@@ -518,13 +516,12 @@ main:focus,
 }
 
 .disclosure summary:hover .disclosure__label {
-  text-decoration: underline;
+  text-decoration: underline 2px var(--gold);
+  text-underline-offset: 0.25em;
 }
 
 .disclosure summary:hover .disclosure__state {
-  background: var(--hover);
-  border-color: var(--hover);
-  color: var(--navy);
+  border-color: var(--gold);
 }
 
 .disclosure__state {

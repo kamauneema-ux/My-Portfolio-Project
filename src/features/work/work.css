@@ -10,9 +10,7 @@
 }
 
 .case__back:hover {
-  background: var(--hover);
-  color: var(--navy);
-  text-decoration: underline;
+  text-decoration: underline 2px var(--gold);
 }
 
 .case__header {
@@ -81,9 +79,7 @@
 }
 
 .case__next-link:hover {
-  background: var(--hover);
-  color: var(--navy);
-  text-decoration-thickness: 3px;
+  text-decoration: underline 3px var(--gold);
 }
 
 /* ---------- M-PESA two-path research map ---------- */
