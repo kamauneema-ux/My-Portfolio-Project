@@ -31,6 +31,10 @@ export default function ZoomableFigure({ src, fullSrc, alt, width, height, capti
     if (!dialog) return;
     if (typeof dialog.showModal === "function") dialog.showModal();
     else dialog.setAttribute("open", "");
+    // On a phone the full-size image is wider than the screen; start at its centre, not its blank left margin.
+    requestAnimationFrame(() => {
+      dialog.scrollLeft = (dialog.scrollWidth - dialog.clientWidth) / 2;
+    });
   }
 
   function closeViewer() {
