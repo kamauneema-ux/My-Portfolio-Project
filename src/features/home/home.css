@@ -1,0 +1,101 @@
+/* Home page: navy hero, featured project, supporting pair, creative work. */
+
+.hero {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  align-items: center;
+  gap: clamp(1.25rem, 6vw, 5rem);
+  padding-block: var(--space-l) var(--space-xl);
+}
+
+.hero h1 {
+  max-width: 16ch;
+}
+
+.hero__intro {
+  max-width: 54ch;
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.hero__location {
+  margin: var(--space-m) 0 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.hero__portrait {
+  justify-self: end;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.work {
+  padding-block: var(--space-xl) var(--space-m);
+}
+
+.project {
+  padding-block: var(--space-m);
+  border-top: 1px solid var(--line);
+}
+
+.project h3 {
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+}
+
+.project--featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-l);
+}
+
+.project__thumbnail {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.project-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-l);
+}
+
+.creative {
+  padding-block: var(--space-l) 0;
+  border-top: 1px solid var(--line);
+}
+
+.creative h2 {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+@media (max-width: 760px) {
+  .hero__grid,
+  .project--featured,
+  .project-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .project-pair {
+    gap: 0;
+  }
+
+  /* Deck: on mobile the introduction comes first, then a compact portrait. */
+  .hero__portrait {
+    justify-self: start;
+    max-width: 140px;
+  }
+}

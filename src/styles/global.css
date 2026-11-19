@@ -1,0 +1,456 @@
+/*
+ * Site-wide styles: base elements, page frame, header, footer and the shared
+ * components (call-to-action links, zoomable figures, disclosures).
+ * Page-specific styles live beside each feature in src/features.
+ */
+@import "./tokens.css";
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-m);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--navy);
+  font: var(--step-0) / 1.6 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-3);
+  margin: var(--space-s) 0;
+}
+
+h2 {
+  font-size: var(--step-2);
+  margin: 0 0 var(--space-m);
+}
+
+h3 {
+  font-size: var(--step-1);
+  margin: var(--space-xs) 0;
+}
+
+p {
+  max-width: 68ch;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--teal);
+  text-underline-offset: 0.25em;
+}
+
+/* One visible focus style everywhere; 7.79:1 on light backgrounds. */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+main:focus,
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+/* ---------- Utilities ---------- */
+.wrap {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.wrap--narrow {
+  max-width: var(--page-narrow);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: -100px;
+  z-index: 10;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: var(--space-s);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.eyebrow--on-dark {
+  color: var(--teal-on-dark);
+}
+
+.page-loading {
+  padding-block: var(--space-xl);
+  color: var(--muted);
+}
+
+/* ---------- Call-to-action link ----------
+ * Every "View … case study" style action looks the same (lecturer feedback),
+ * and hover changes three things at once so the feedback is unmistakable.
+ */
+.cta {
+  display: inline-block;
+  margin-top: var(--space-s);
+  padding: 0.55rem 0.95rem;
+  border: 2px solid var(--teal);
+  border-radius: 6px;
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cta:hover {
+  background: var(--teal);
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ---------- Header and navigation ---------- */
+.site-header {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--navy-line);
+}
+
+.site-nav a,
+.site-nav button {
+  color: var(--white);
+}
+
+.site-nav :focus-visible {
+  outline-color: var(--teal-on-dark);
+}
+
+.site-nav__name {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav__links {
+  display: flex;
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav__links a {
+  text-decoration: none;
+  padding-block: 0.25rem;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__links a:hover,
+.site-nav__links a.active {
+  color: var(--teal-on-dark);
+  border-bottom-color: currentColor;
+}
+
+.site-nav__toggle {
+  display: none;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--teal-on-dark);
+  border-radius: 6px;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Below 640px the links collapse behind the Menu button. */
+@media (max-width: 640px) {
+  .site-nav__toggle {
+    display: inline-block;
+  }
+
+  .site-nav__links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav__links[data-open="true"] {
+    display: flex;
+  }
+
+  .site-nav__links a {
+    display: block;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--navy-line);
+  }
+}
+
+/* ---------- Footer / contact ---------- */
+.site-footer {
+  margin-top: var(--space-xl);
+  padding-block: var(--space-l);
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.site-footer h2 {
+  margin-bottom: var(--space-s);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  margin: var(--space-m) 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 700;
+}
+
+.site-footer__links a:hover {
+  color: var(--navy);
+  text-decoration-thickness: 3px;
+}
+
+.site-footer__legal {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Simple text pages (About, 404) ---------- */
+.page {
+  padding-block: var(--space-xl) 0;
+}
+
+.page__lead {
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+/* ---------- Zoomable figure ---------- */
+.zoom-figure {
+  margin: var(--space-m) 0 0;
+}
+
+.zoom-figure__trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.zoom-figure__trigger img {
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.zoom-figure__hint {
+  position: absolute;
+  right: var(--space-xs);
+  bottom: var(--space-xs);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.zoom-figure__trigger:hover .zoom-figure__hint,
+.zoom-figure__trigger:focus-visible .zoom-figure__hint {
+  opacity: 1;
+}
+
+.zoom-figure figcaption {
+  margin-top: var(--space-xs);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.zoom-figure__note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+}
+
+.zoom-viewer {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--bg);
+}
+
+.zoom-viewer::backdrop {
+  background: rgb(17 43 66 / 0.8);
+}
+
+.zoom-viewer__bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+  padding: var(--space-xs) var(--space-s);
+  background: var(--navy);
+}
+
+.zoom-viewer__bar a,
+.zoom-viewer__close {
+  color: var(--white);
+  font: inherit;
+  font-weight: 700;
+}
+
+.zoom-viewer__bar :focus-visible {
+  outline-color: var(--teal-on-dark);
+}
+
+.zoom-viewer__close {
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--teal-on-dark);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Full size: the image keeps its natural width and the canvas scrolls. */
+.zoom-viewer__canvas {
+  overflow: auto;
+  padding: var(--space-s);
+}
+
+.zoom-viewer__canvas img {
+  max-width: none;
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .zoom-viewer__canvas img {
+    max-width: 100%;
+  }
+}
+
+/* ---------- Disclosure (expand / collapse) ---------- */
+.disclosure {
+  margin-top: var(--space-l);
+  border-top: 2px solid var(--navy);
+  border-bottom: 1px solid var(--line);
+}
+
+.disclosure summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+  padding-block: var(--space-s);
+  font-weight: 700;
+  font-size: var(--step-1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure summary:hover .disclosure__label {
+  text-decoration: underline;
+}
+
+.disclosure__state {
+  flex-shrink: 0;
+  padding: 0.2rem 0.75rem;
+  border: 2px solid var(--teal);
+  border-radius: 6px;
+  color: var(--teal);
+  font-size: 0.9rem;
+}
+
+.disclosure__state::after {
+  content: " +";
+}
+
+.disclosure[open] .disclosure__state::after {
+  content: " \2212";
+}
+
+.disclosure__body {
+  padding-bottom: var(--space-l);
+}
