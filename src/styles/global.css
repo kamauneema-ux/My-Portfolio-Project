@@ -412,7 +412,8 @@ main:focus,
 }
 
 .zoom-viewer__canvas img {
-  max-width: none;
+  /* About two screens wide: diagram labels become readable without endless scrolling. */
+  max-width: 220vw;
   margin-inline: auto;
 }
 
