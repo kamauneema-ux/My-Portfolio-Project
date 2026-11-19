@@ -115,7 +115,8 @@
 }
 
 .path-map__steps li + li::before {
-  content: "\2192";
+  /* Empty alt text after the slash stops screen readers announcing "right arrow". */
+  content: "\2192" / "";
   position: absolute;
   left: -1.6rem;
   color: var(--muted);

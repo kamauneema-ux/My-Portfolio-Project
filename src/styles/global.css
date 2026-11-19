@@ -354,15 +354,21 @@ main:focus,
   padding: 0;
   border: 0;
   background: var(--bg);
+  /* The dialog itself scrolls in both directions, so scrollbars stay on screen. */
+  overflow: auto;
 }
 
 .zoom-viewer::backdrop {
   background: rgb(17 43 66 / 0.8);
 }
 
+/* Pinned top-left so Close stays reachable however far the image is scrolled. */
 .zoom-viewer__bar {
   position: sticky;
   top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -390,9 +396,10 @@ main:focus,
   cursor: pointer;
 }
 
-/* Full size: the image keeps its natural width and the canvas scrolls. */
+/* Full size: the image keeps its natural width and the dialog scrolls. */
 .zoom-viewer__canvas {
-  overflow: auto;
+  width: max-content;
+  min-width: 100%;
   padding: var(--space-s);
 }
 
@@ -401,7 +408,12 @@ main:focus,
   margin-inline: auto;
 }
 
+/* On wide screens the whole image fits, so no scrolling is needed. */
 @media (min-width: 900px) {
+  .zoom-viewer__canvas {
+    width: auto;
+  }
+
   .zoom-viewer__canvas img {
     max-width: 100%;
   }
