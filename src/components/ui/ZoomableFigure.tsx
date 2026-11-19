@@ -46,11 +46,12 @@ export default function ZoomableFigure({ src, fullSrc, alt, caption, note, eager
         className="zoom-figure__trigger"
         onClick={openViewer}
         aria-haspopup="dialog"
+        // One label that includes the description, so it is not announced twice.
+        aria-label={`Open full size image: ${alt}`}
       >
         <img src={src} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" />
-        <span className="zoom-figure__hint">
-          <span className="visually-hidden">Open full size image: {alt}</span>
-          <span aria-hidden="true">View full size</span>
+        <span className="zoom-figure__hint" aria-hidden="true">
+          View full size
         </span>
       </button>
 
