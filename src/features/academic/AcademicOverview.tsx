@@ -52,7 +52,13 @@ export default function AcademicOverview() {
         <div className="ac-cards">
           {overview.cards.map((card, index) => (
             <article key={card.number} className="ac-card">
-              <img src={card.image.src} alt={card.image.alt} loading="lazy" />
+              <img
+                src={card.image.src}
+                alt={card.image.alt}
+                width={card.image.width}
+                height={card.image.height}
+                loading="lazy"
+              />
               <p className="ac-eyebrow">
                 {card.number} / {card.kind}
               </p>

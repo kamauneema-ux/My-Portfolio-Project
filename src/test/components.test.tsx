@@ -5,7 +5,7 @@ import ZoomableFigure from "../components/ui/ZoomableFigure";
 import Disclosure from "../components/ui/Disclosure";
 
 describe("ZoomableFigure", () => {
-  const props = { src: "small.svg", fullSrc: "large.png", alt: "Staff journey", caption: "Caption text" };
+  const props = { src: "small.svg", fullSrc: "large.png", alt: "Staff journey", caption: "Caption text", width: 1200, height: 450 };
 
   it("opens the full-size image and returns focus when closed", async () => {
     const user = userEvent.setup();

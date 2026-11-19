@@ -12,7 +12,7 @@ import groupDiscussion from "../assets/academic/reflection-group-discussion.jpg"
 import storyboardReview from "../assets/academic/reflection-storyboard-review.jpg";
 import colleagueScene from "../assets/academic/reflection-colleague-scene.jpg";
 
-export type Figure = { src: string; alt: string; caption: string };
+export type Figure = { src: string; alt: string; caption: string; width: number; height: number };
 
 export type Block =
   | { type: "paragraph"; text: string }
@@ -32,22 +32,32 @@ export const course = "University of Limerick · CS6041 · 2026/27";
 const figures = {
   groupDiscussion: {
     src: groupDiscussion,
+    width: 606,
+    height: 816,
     alt: "Five group members standing around a table in a kitchen and living area, discussing a scene beside a phone mounted on a tripod.",
   },
   productShoot: {
     src: productShoot,
+    width: 606,
+    height: 456,
     alt: "A Cheetah perfume bottle with a gold cap resting on dark green satin against a warm orange background.",
   },
   perfumeBottle: {
     src: perfumeBottle,
+    width: 606,
+    height: 662,
     alt: "A square glass perfume bottle with a gold cap and a label showing two cheetahs and the word cheetah, on a wooden surface.",
   },
   storyboardReview: {
     src: storyboardReview,
+    width: 531,
+    height: 564,
     alt: "Grace reviewing a storyboard on a tablet while a phone on a tripod frames a scene being filmed at the table behind her.",
   },
   colleagueScene: {
     src: colleagueScene,
+    width: 1039,
+    height: 584,
     alt: "Grace and another actor standing facing each other outside a building entrance while a group member films them with a phone on a tripod.",
   },
 };

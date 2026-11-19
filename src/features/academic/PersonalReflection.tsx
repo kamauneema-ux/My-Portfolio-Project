@@ -17,7 +17,7 @@ export default function PersonalReflection() {
           <p className="ac-meta">{blog.meta}</p>
         </div>
         <figure className="ac-reflection-hero__photo">
-          <img src={blog.hero.src} alt={blog.hero.alt} width={606} height={816} />
+          <img src={blog.hero.src} alt={blog.hero.alt} width={blog.hero.width} height={blog.hero.height} />
           <figcaption>{blog.hero.caption}</figcaption>
         </figure>
       </section>

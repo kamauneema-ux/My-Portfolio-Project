@@ -6,6 +6,9 @@ type Props = {
   /** Larger image opened in the viewer. Defaults to `src`. */
   fullSrc?: string;
   alt: string;
+  /** Intrinsic size, so the browser reserves space before the image loads (no layout shift). */
+  width: number;
+  height: number;
   caption?: string;
   /** Small print under the caption, e.g. a source note. */
   note?: string;
@@ -18,7 +21,7 @@ type Props = {
  * readable on a phone. Uses the native <dialog> element, which gives a focus
  * trap and Escape-to-close for free; focus returns to the image afterwards.
  */
-export default function ZoomableFigure({ src, fullSrc, alt, caption, note, eager }: Props) {
+export default function ZoomableFigure({ src, fullSrc, alt, width, height, caption, note, eager }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -49,7 +52,14 @@ export default function ZoomableFigure({ src, fullSrc, alt, caption, note, eager
         // One label that includes the description, so it is not announced twice.
         aria-label={`Open full size image: ${alt}`}
       >
-        <img src={src} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" />
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+        />
         <span className="zoom-figure__hint" aria-hidden="true">
           View full size
         </span>
@@ -81,7 +91,7 @@ export default function ZoomableFigure({ src, fullSrc, alt, caption, note, eager
           </button>
         </div>
         <div className="zoom-viewer__canvas">
-          <img src={fullSrc ?? src} alt={alt} />
+          <img src={fullSrc ?? src} alt={alt} width={width} height={height} />
         </div>
       </dialog>
     </figure>

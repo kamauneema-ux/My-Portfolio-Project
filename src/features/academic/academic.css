@@ -274,6 +274,11 @@
   background: var(--ac-pale);
 }
 
+/* Sage is only 4.08:1 on the pale band, so the label uses the body colour here. */
+.ac-practice .ac-eyebrow {
+  color: var(--ac-body);
+}
+
 .ac-practice__text {
   margin: 0;
   font-family: var(--font-serif);
