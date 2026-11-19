@@ -11,8 +11,9 @@
   --muted: #4a5f70; /* secondary text, 6.31:1 on --bg */
   --bg: #faf9f6;
   --white: #ffffff;
-  /* Hover accent, used for nothing else so it always signals "clickable"; navy on it 9.43:1. */
-  --hover: #ffc857;
+  /* Hover gold, used only for underlines and borders so it never sits behind text. */
+  --gold: #b8860b; /* on light backgrounds, 3.09:1 */
+  --gold-on-dark: #f2c14e; /* on navy 8.64:1, on teal 4.89:1 */
   --line: #bccbc9; /* decorative rules only, never text */
   --surface: #eef3f2;
 

@@ -69,9 +69,8 @@
 }
 
 .ac-link:hover {
-  background: var(--hover);
-  border-bottom-width: 3px;
-  color: var(--ac-ink);
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 var(--gold);
 }
 
 /* ---------- Header and breadcrumb ---------- */
@@ -120,8 +119,8 @@
 
 .ac-header__nav a:hover {
   color: var(--ac-ink);
-  background: var(--hover);
-  text-decoration: underline;
+  text-decoration: underline 2px var(--gold);
+  text-underline-offset: 0.3em;
 }
 
 .ac-header__nav a.active {
@@ -138,9 +137,8 @@
 }
 
 .academic .ac-header__exit:hover {
-  background: var(--hover);
-  border-color: var(--hover);
-  color: var(--ac-ink);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
   text-decoration: none;
 }
 
