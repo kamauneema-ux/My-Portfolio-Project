@@ -31,6 +31,9 @@ jobs:
 
       - run: npm run lint
 
+      # Routing and interactive-component tests; a failure stops the deploy.
+      - run: npm test
+
       # Project Pages are served from /<repo-name>/, not the domain root
       - run: npm run build -- --base=/${{ github.event.repository.name }}/
 
