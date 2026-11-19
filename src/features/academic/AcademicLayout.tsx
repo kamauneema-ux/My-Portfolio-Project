@@ -9,7 +9,7 @@ const crumbs: Record<string, string> = {
 };
 
 /**
- * Shell for the Academic projects section. It has its own quieter theme and
+ * Shell for the Academic and creative projects section. It has its own quieter theme and
  * sub-navigation (from the design board) so assessed coursework reads as a
  * separate space from the professional case studies.
  */
@@ -27,9 +27,9 @@ export default function AcademicLayout() {
         <div className="ac-wrap ac-header__bar">
           <Link to={routes.academic} className="ac-header__brand">
             Grace<span aria-hidden="true">.</span>
-            <span className="ac-header__section">Academic projects</span>
+            <span className="ac-header__section">Academic and creative projects</span>
           </Link>
-          <nav aria-label="Academic projects" className="ac-header__nav">
+          <nav aria-label="Academic and creative projects" className="ac-header__nav">
             <ul>
               {academicNav.map((item) => (
                 <li key={item.to}>
@@ -56,9 +56,9 @@ export default function AcademicLayout() {
             </li>
             <li>
               {crumb ? (
-                <Link to={routes.academic}>Academic Projects</Link>
+                <Link to={routes.academic}>Academic and Creative Projects</Link>
               ) : (
-                <span aria-current="page">Academic Projects</span>
+                <span aria-current="page">Academic and Creative Projects</span>
               )}
             </li>
             {crumb && (

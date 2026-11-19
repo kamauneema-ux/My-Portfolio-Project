@@ -69,7 +69,9 @@
 }
 
 .ac-link:hover {
+  background: var(--hover);
   border-bottom-width: 3px;
+  color: var(--ac-ink);
 }
 
 /* ---------- Header and breadcrumb ---------- */
@@ -116,7 +118,12 @@
   color: var(--ac-body);
 }
 
-.ac-header__nav a:hover,
+.ac-header__nav a:hover {
+  color: var(--ac-ink);
+  background: var(--hover);
+  text-decoration: underline;
+}
+
 .ac-header__nav a.active {
   color: var(--ac-ink);
   font-weight: 700;
@@ -131,8 +138,9 @@
 }
 
 .academic .ac-header__exit:hover {
-  background: var(--ac-ink);
-  color: var(--white);
+  background: var(--hover);
+  border-color: var(--hover);
+  color: var(--ac-ink);
   text-decoration: none;
 }
 

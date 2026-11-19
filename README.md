@@ -2,7 +2,7 @@
 
 A portfolio for service design, product design and UX research work, built for the Digital Portfolio module (Phase 2) at the University of Limerick.
 
-It leads with three Safaricom case studies, each built around one real decision, and keeps assessed coursework in a separate Academic projects section.
+It leads with three Safaricom case studies, each built around one real decision, and keeps assessed coursework in a separate Academic and creative projects section.
 
 **Live site:** https://kamauneema-ux.github.io/My-Portfolio-Project/
 **Repository:** https://github.com/kamauneema-ux/My-Portfolio-Project
@@ -62,7 +62,7 @@ Then open http://localhost:4173/My-Portfolio-Project/.
 | `/work/digital-sacco` | Case study: one digital SACCO app for members of multiple cooperatives |
 | `/work/mpesa-one-app` | Case study: why M-PESA One App was hard to activate while roaming |
 | `/about` | Background |
-| `/academic-projects` | Academic projects overview: one film, two perspectives |
+| `/academic-projects` | Academic and creative projects overview: one film, two perspectives |
 | `/academic-projects/group-production` | Blog 1: the film and the group report |
 | `/academic-projects/personal-reflection` | Blog 2: personal reflection |
 

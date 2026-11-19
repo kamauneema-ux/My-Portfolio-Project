@@ -10,6 +10,8 @@
 }
 
 .case__back:hover {
+  background: var(--hover);
+  color: var(--navy);
   text-decoration: underline;
 }
 
@@ -79,6 +81,7 @@
 }
 
 .case__next-link:hover {
+  background: var(--hover);
   color: var(--navy);
   text-decoration-thickness: 3px;
 }
