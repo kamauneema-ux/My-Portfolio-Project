@@ -7,6 +7,9 @@ import CaseStudyLayout from "./CaseStudyLayout";
 import ZoomableFigure from "../../components/ui/ZoomableFigure";
 import Disclosure from "../../components/ui/Disclosure";
 
+// All five SACCO visuals share one canvas size, which keeps their display width consistent.
+const size = { width: 1920, height: 1140 };
+
 /**
  * MySacco case study. Each visual carries its own heading and explanation,
  * so the page stacks them in story order: 1, 2, 4 visible; 3, 5 on request.
@@ -30,15 +33,18 @@ export default function SaccoCaseStudy() {
 
       <div className="case__visual-stack">
         <ZoomableFigure
+          {...size}
           src={roleAndAudience}
           alt="Who the service was for and what I personally owned."
           eager
         />
         <ZoomableFigure
+          {...size}
           src={memberJourney}
           alt="How a member signs in, selects a SACCO and accesses its services."
         />
         <ZoomableFigure
+          {...size}
           src={testingAndDecision}
           alt="Why I flagged withdrawal to M-PESA for further testing even though all 25 executed tests had passed."
         />
@@ -47,10 +53,12 @@ export default function SaccoCaseStudy() {
       <Disclosure label="Explore the full case study">
         <div className="case__visual-stack">
           <ZoomableFigure
+            {...size}
             src={serviceBlueprint}
             alt="How the SACCO, the member and the delivery team fit together across the journey."
           />
           <ZoomableFigure
+            {...size}
             src={leadershipUpdate}
             alt="How I communicated testing progress and what each pilot still needed."
           />

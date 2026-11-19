@@ -19,6 +19,8 @@ export default function BlockList({ blocks, numbered = false }: Props) {
               key={index}
               src={block.figure.src}
               alt={block.figure.alt}
+              width={block.figure.width}
+              height={block.figure.height}
               caption={block.figure.caption}
             />
           );

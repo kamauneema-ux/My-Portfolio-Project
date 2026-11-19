@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import RouteEffects from "./components/layout/RouteEffects";
@@ -35,7 +35,14 @@ export default function App() {
         </Route>
 
         {/* Academic projects have their own themed shell and sub-navigation. */}
-        <Route path={routes.academic} element={<AcademicLayout />}>
+        <Route
+          path={routes.academic}
+          element={
+            <Suspense fallback={<div id="main-content" />}>
+              <AcademicLayout />
+            </Suspense>
+          }
+        >
           <Route index element={<AcademicOverview />} />
           <Route path={routes.groupProduction} element={<GroupProduction />} />
           <Route path={routes.personalReflection} element={<PersonalReflection />} />

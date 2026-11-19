@@ -77,6 +77,14 @@ main:focus,
   outline: none;
 }
 
+/*
+ * Reserve a full screen for the page while a lazily loaded page arrives, so
+ * the footer starts below the fold instead of jumping down (layout shift).
+ */
+#main-content {
+  min-height: 100vh;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

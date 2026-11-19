@@ -40,6 +40,8 @@ export default function CapaCaseStudy() {
         <ZoomableFigure
           src={billingSvg}
           fullSrc={billingPng}
+          width={1800}
+          height={675}
           alt="One account was billed for a previous product and its replacement."
           caption="One customer was billed for both their old product and its replacement. A credit note could correct the bill. What caused both charges?"
           eager
@@ -51,6 +53,8 @@ export default function CapaCaseStudy() {
         <h2 id="staff-journey">The staff journey I designed</h2>
         <ZoomableFigure
           src={journeyPng}
+          width={1573}
+          height={1217}
           alt="Staff log the issue. Quality assigns an owner, reviews the proposed fix and sends it for approval. Credit notes can then be issued where needed. Preventive actions are tracked to closure."
           caption="I moved the process from emails and calls into CAPA. Credit notes required approval, and each preventive action had an owner and a deadline."
           note="Reconstructed from my project records."
@@ -62,6 +66,8 @@ export default function CapaCaseStudy() {
         <ZoomableFigure
           src={resultsSvg}
           fullSrc={resultsPng}
+          width={1800}
+          height={689}
           alt="From 13 May to 30 June 2025, teams logged 88 requests, shared 36 corrective plans and shared 10 preventive plans."
         />
       </section>
@@ -71,12 +77,16 @@ export default function CapaCaseStudy() {
         <ZoomableFigure
           src={personaSvg}
           fullSrc={personaPng}
+          width={1800}
+          height={800}
           alt="Responsibilities of frontline staff, quality reviewers, resolution owners, approving leads and preventive action owners."
         />
         <h3>Before and after CAPA</h3>
         <ZoomableFigure
           src={beforeAfterSvg}
           fullSrc={beforeAfterPng}
+          width={1800}
+          height={828}
           alt="Email and phone requests became a tracked workflow with case review, approval and follow up."
         />
       </Disclosure>
