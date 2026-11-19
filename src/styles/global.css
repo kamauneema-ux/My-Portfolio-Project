@@ -167,8 +167,9 @@ main:focus,
 }
 
 .cta:hover {
-  background: var(--teal);
-  color: var(--white);
+  background: var(--hover);
+  border-color: var(--hover);
+  color: var(--navy);
   text-decoration: underline;
 }
 
@@ -216,9 +217,13 @@ main:focus,
   border-bottom: 2px solid transparent;
 }
 
-.site-nav__links a:hover,
 .site-nav__links a.active {
   color: var(--teal-on-dark);
+  border-bottom-color: currentColor;
+}
+
+.site-nav__links a:hover {
+  color: var(--hover);
   border-bottom-color: currentColor;
 }
 
@@ -260,33 +265,78 @@ main:focus,
 /* ---------- Footer / contact ---------- */
 .site-footer {
   margin-top: var(--space-xl);
-  padding-block: var(--space-l);
-  border-top: 1px solid var(--line);
-  background: var(--white);
+  padding-block: var(--space-xl) var(--space-l);
+  background: var(--teal);
+  color: var(--white);
 }
 
 .site-footer h2 {
   margin-bottom: var(--space-s);
+  font-size: var(--step-3);
+}
+
+.site-footer__invite {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: #e3f3f1; /* 7.2:1 on teal */
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--white);
 }
 
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-m);
-  margin: var(--space-m) 0;
+  gap: var(--space-s);
+  margin: var(--space-l) 0;
   padding: 0;
   list-style: none;
-  font-weight: 700;
 }
 
-.site-footer__links a:hover {
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--white);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.contact-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.contact-link--primary {
+  background: var(--white);
+  color: var(--teal);
+}
+
+.contact-link--secondary {
+  background: transparent;
+  color: var(--white);
+}
+
+.contact-link:hover {
+  background: var(--hover);
+  border-color: var(--hover);
   color: var(--navy);
-  text-decoration-thickness: 3px;
 }
 
 .site-footer__legal {
+  margin: 0;
+  padding-top: var(--space-m);
+  border-top: 1px solid rgb(255 255 255 / 0.3);
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #e3f3f1;
 }
 
 /* ---------- Simple text pages (About, 404) ---------- */
@@ -336,9 +386,19 @@ main:focus,
   transition: opacity 0.15s ease;
 }
 
+.zoom-figure__trigger:hover {
+  border-color: var(--hover);
+  box-shadow: 0 0 0 3px var(--hover);
+}
+
 .zoom-figure__trigger:hover .zoom-figure__hint,
 .zoom-figure__trigger:focus-visible .zoom-figure__hint {
   opacity: 1;
+}
+
+.zoom-figure__trigger:hover .zoom-figure__hint {
+  background: var(--hover);
+  color: var(--navy);
 }
 
 .zoom-figure figcaption {
@@ -353,30 +413,32 @@ main:focus,
   font-size: 0.82rem;
 }
 
+/* A framed window slightly smaller than the screen; the whole image fits without scrolling. */
 .zoom-viewer {
-  width: 100vw;
-  max-width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
+  width: min(94vw, 1500px);
+  max-width: 94vw;
+  max-height: 92vh;
+  margin: auto;
   padding: 0;
   border: 0;
-  background: var(--bg);
-  /* The dialog itself scrolls in both directions, so scrollbars stay on screen. */
-  overflow: auto;
+  border-radius: var(--radius);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.35);
+}
+
+/* Only when open: setting display on a closed <dialog> would make it visible. */
+.zoom-viewer[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .zoom-viewer::backdrop {
   background: rgb(17 43 66 / 0.8);
 }
 
-/* Pinned top-left so Close stays reachable however far the image is scrolled. */
 .zoom-viewer__bar {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100vw;
+  flex: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -404,28 +466,32 @@ main:focus,
   cursor: pointer;
 }
 
-/* Full size: the image keeps its natural width and the dialog scrolls. */
+.zoom-viewer__bar a:hover {
+  color: var(--hover);
+}
+
+.zoom-viewer__close:hover {
+  background: var(--hover);
+  border-color: var(--hover);
+  color: var(--navy);
+}
+
 .zoom-viewer__canvas {
-  width: max-content;
-  min-width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--space-s);
 }
 
+/* 4.5rem leaves room for the toolbar and padding inside the 92vh window. */
 .zoom-viewer__canvas img {
-  /* About two screens wide: diagram labels become readable without endless scrolling. */
-  max-width: 220vw;
-  margin-inline: auto;
-}
-
-/* On wide screens the whole image fits, so no scrolling is needed. */
-@media (min-width: 900px) {
-  .zoom-viewer__canvas {
-    width: auto;
-  }
-
-  .zoom-viewer__canvas img {
-    max-width: 100%;
-  }
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(92vh - 4.5rem);
+  object-fit: contain;
 }
 
 /* ---------- Disclosure (expand / collapse) ---------- */
@@ -453,6 +519,12 @@ main:focus,
 
 .disclosure summary:hover .disclosure__label {
   text-decoration: underline;
+}
+
+.disclosure summary:hover .disclosure__state {
+  background: var(--hover);
+  border-color: var(--hover);
+  color: var(--navy);
 }
 
 .disclosure__state {

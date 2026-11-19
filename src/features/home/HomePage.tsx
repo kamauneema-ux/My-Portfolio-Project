@@ -80,7 +80,7 @@ export default function HomePage() {
           Cheetah Perfume, a short advertisement made with my MSc group.
         </p>
         <Link to={routes.academic} className="cta">
-          View academic projects<span aria-hidden="true"> &rarr;</span>
+          View academic and creative projects<span aria-hidden="true"> &rarr;</span>
         </Link>
       </section>
     </>

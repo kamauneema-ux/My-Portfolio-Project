@@ -24,12 +24,13 @@ export const anchors = {
 
 /** Main navigation, in reading order. "Work" and "Contact" scroll to sections. */
 export const mainNav = [
-  { label: "Work", to: `${routes.home}#${anchors.work}` },
   { label: "About", to: routes.about },
+  { label: "Work", to: `${routes.home}#${anchors.work}` },
+  { label: "Academic and creative projects", to: routes.academic },
   { label: "Contact", to: `#${anchors.contact}` },
 ] as const;
 
-/** Sub-navigation shown only inside the Academic projects section. */
+/** Sub-navigation shown only inside the Academic and creative projects section. */
 export const academicNav = [
   { label: "Overview", to: routes.academic },
   { label: "Group production", to: routes.groupProduction },
@@ -42,7 +43,7 @@ const pageTitles: Record<string, string> = {
   [routes.sacco]: "One digital SACCO app for members of multiple cooperatives",
   [routes.mpesa]: "Why was M-PESA One App hard to activate while roaming?",
   [routes.about]: "About",
-  [routes.academic]: "Academic projects",
+  [routes.academic]: "Academic and creative projects",
   [routes.groupProduction]: "Cheetah Perfume: group production",
   [routes.personalReflection]: "Creating our perfume advertisement: personal reflection",
 };
