@@ -6,6 +6,8 @@ import BlockList from "./BlockList";
 import useActiveSection from "./useActiveSection";
 
 const sectionIds = groupProduction.sections.map((section) => section.id);
+const referencesNumber = String(sectionIds.indexOf("references") + 1).padStart(2, "0");
+const { referenceList } = groupProduction;
 
 /**
  * Blog 1: the film first, then the group report reproduced section by section,
@@ -99,7 +101,9 @@ export default function GroupProduction() {
           </nav>
 
           <div className="ac-prose">
-            {groupProduction.sections.map((section, index) => (
+            {groupProduction.sections
+              .filter((section) => section.id !== "references")
+              .map((section, index) => (
               <section
                 key={section.id}
                 id={section.id}
@@ -118,6 +122,50 @@ export default function GroupProduction() {
             ))}
           </div>
         </div>
+
+        {/* Full width below the report, so the download stands out. */}
+        <section
+          id="references"
+          className="ac-refs"
+          aria-labelledby="references-title"
+        >
+          <h3 id="references-title" className="ac-eyebrow ac-refs__label">
+            <span aria-hidden="true">{referencesNumber}</span>
+            References / Media credits
+          </h3>
+          <div className="ac-refs__card">
+            <span className="ac-refs__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z" />
+                <path d="M14 3v5h5M8 9h3M8 12.5h5" />
+                <path d="M16 13v4.2" />
+                <circle cx="14.6" cy="17.4" r="1.4" />
+                <path d="M16 13l2 .8" />
+              </svg>
+            </span>
+            <div className="ac-refs__text">
+              <p className="ac-refs__eyebrow">{referenceList.eyebrow}</p>
+              <p className="ac-refs__title">
+                Behind the <em>Sound.</em>
+              </p>
+              <p>{referenceList.summary}</p>
+              <p className="ac-refs__note">
+                {referenceList.note} &middot; {referenceList.details}
+              </p>
+            </div>
+            <a
+              className="ac-pill ac-refs__download"
+              href={referenceList.file}
+              download={referenceList.fileName}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />
+              </svg>
+              Download references
+              <span className="visually-hidden"> ({referenceList.details})</span>
+            </a>
+          </div>
+        </section>
       </section>
 
       <section className="ac-wrap ac-next" aria-labelledby="next-title">

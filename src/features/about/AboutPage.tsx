@@ -7,7 +7,7 @@ export default function AboutPage() {
 
   return (
     <article className="wrap wrap--narrow page about">
-      <p className="eyebrow about__eyebrow">About</p>
+      <p className="eyebrow about__eyebrow">About me</p>
       <h1 className="about__title">
         Designing with <strong>people.</strong>
         <br />

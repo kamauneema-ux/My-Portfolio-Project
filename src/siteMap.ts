@@ -24,7 +24,7 @@ export const anchors = {
 
 /** Main navigation, in reading order. "Work" and "Contact" scroll to sections. */
 export const mainNav = [
-  { label: "About", to: routes.about },
+  { label: "About me", to: routes.about },
   { label: "Work", to: `${routes.home}#${anchors.work}` },
   { label: "Academic and Creative Projects", to: routes.academic },
   { label: "Contact", to: `#${anchors.contact}` },
@@ -43,7 +43,7 @@ const pageTitles: Record<string, string> = {
     "Redesigning how Safaricom Business handled billing complaints",
   [routes.sacco]: "One digital SACCO app for members of multiple cooperatives",
   [routes.mpesa]: "Why was M-PESA One App hard to activate while roaming?",
-  [routes.about]: "About",
+  [routes.about]: "About me",
   [routes.academic]: "Academic and Creative Projects",
   [routes.groupProduction]: "Cheetah Perfume: group production",
   [routes.personalReflection]:

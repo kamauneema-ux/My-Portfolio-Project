@@ -56,7 +56,6 @@ export default function CapaCaseStudy() {
           height={1217}
           alt="Staff log the issue. Quality assigns an owner, reviews the proposed fix and sends it for approval. Credit notes can then be issued where needed. Preventive actions are tracked to closure."
           caption="I moved the process from emails and calls into CAPA. Credit notes required approval, and each preventive action had an owner and a deadline."
-          note="Reconstructed from my project records."
         />
       </section>
 

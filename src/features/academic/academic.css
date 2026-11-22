@@ -501,6 +501,84 @@
   background: var(--ac-pale);
 }
 
+/* References: a download card for the group's media reference list. */
+.ac-refs {
+  scroll-margin-top: var(--space-m);
+  padding-bottom: var(--space-xl);
+}
+
+.ac-refs__label {
+  margin-bottom: var(--space-m);
+}
+
+.ac-refs__label span {
+  margin-right: 1.25rem;
+}
+
+.ac-refs__card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-l);
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--ac-pale);
+  border-radius: 14px;
+  background: #fcfcf8;
+}
+
+.ac-refs__icon {
+  display: grid;
+  place-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 10px;
+  background: var(--ac-pale);
+  color: var(--ac-sage);
+}
+
+.ac-refs__icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.ac-refs__text p {
+  margin: 0;
+  color: var(--ac-body);
+}
+
+.academic .ac-refs__eyebrow {
+  margin-bottom: var(--space-s);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac-sage);
+}
+
+.academic .ac-refs__title {
+  margin-bottom: var(--space-xs);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ac-ink);
+}
+
+.academic .ac-refs__note {
+  margin-top: var(--space-s);
+  font-size: 0.85rem;
+  color: var(--ac-sage);
+}
+
+.academic .ac-pill.ac-refs__download {
+  gap: 0.75rem;
+}
+
+.ac-refs__download svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 /* Closing link at the foot of each blog. */
 .ac-next {
   display: flex;
@@ -726,5 +804,19 @@
   .ac-block {
     grid-template-columns: 1.75rem 1fr;
     gap: var(--space-s);
+  }
+
+  .ac-refs__card {
+    grid-template-columns: 1fr;
+    gap: var(--space-m);
+  }
+
+  .ac-refs__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .academic .ac-refs__download {
+    justify-self: start;
   }
 }

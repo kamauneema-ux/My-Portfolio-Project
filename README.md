@@ -2,7 +2,7 @@
 
 A portfolio for service design, product design and UX research work, built for the Digital Portfolio module (Phase 2) at the University of Limerick.
 
-It leads with three Safaricom case studies, each built around one real decision, and keeps assessed coursework in a separate Academic and creative projects section.
+It leads with three Safaricom case studies, each built around one real decision, and keeps assessed coursework in a separate Academic and Creative Projects section.
 
 **Live site:** https://kamauneema-ux.github.io/My-Portfolio-Project/
 **Repository:** https://github.com/kamauneema-ux/My-Portfolio-Project
@@ -57,13 +57,13 @@ Then open http://localhost:4173/My-Portfolio-Project/.
 
 | Address                                  | Page                                                                      |
 | ---------------------------------------- | ------------------------------------------------------------------------- |
-| `/`                                      | Home: introduction, three projects, creative work                         |
+| `/`                                      | Home: introduction, three case studies, Academic and Creative Projects    |
 | `/work/capa`                             | Case study: redesigning how Safaricom Business handled billing complaints |
 | `/work/digital-sacco`                    | Case study: one digital SACCO app for members of multiple cooperatives    |
 | `/work/mpesa-one-app`                    | Case study: why M-PESA One App was hard to activate while roaming         |
-| `/about`                                 | Background                                                                |
-| `/academic-projects`                     | Academic and creative projects overview: one film, two perspectives       |
-| `/academic-projects/group-production`    | Blog 1: the film and the group report                                     |
+| `/about`                                 | About me: approach, background and life beyond work                       |
+| `/academic-projects`                     | Academic and Creative Projects overview: one film, two perspectives       |
+| `/academic-projects/group-production`    | Blog 1: the film, the group report and the downloadable media references  |
 | `/academic-projects/personal-reflection` | Blog 2: personal reflection                                               |
 
 **Contact** is the footer of every main page, reached from the navigation.
@@ -97,6 +97,7 @@ src/
       ZoomableFigure.tsx   Image that opens full size
       Disclosure.tsx       Expand/collapse section
       FilmPlayer.tsx       The Cheetah Perfume video
+      ScrollProgress.tsx   Reading progress bar on long pages
 
   features/            One folder per menu item
     home/                Home page and its styles
@@ -109,13 +110,13 @@ src/
     tokens.css           Colours, type sizes and spacing
     global.css           Base styles and shared components
 
-  assets/              Images and video, grouped like features/
+  assets/              Images, video and the media reference PDF, grouped like features/
   test/                Automated tests
 ```
 
 **Separation of concerns.** Content lives in `content/`, layout in `components/` and `features/`, and visual decisions in CSS custom properties in `styles/tokens.css`. Changing a sentence never means touching a component, and changing a colour never means touching a page.
 
-**Lazy loading.** Only the home page is in the first download. Each other page is fetched when it is first visited (`React.lazy` in `App.tsx`), so the first visit downloads about 89 KB of compressed JavaScript.
+**Lazy loading.** Only the home page is in the first download. Each other page is fetched when it is first visited (`React.lazy` in `App.tsx`), so the first visit downloads about 90 KB of compressed JavaScript.
 
 ---
 
@@ -130,6 +131,12 @@ src/
 | Video                    | Blog 1                             | Self-hosted MP4 with a poster frame; nothing downloads until play                                        |
 | Research map             | M-PESA case study                  | Ordered lists that reflow into a vertical timeline on phones                                             |
 | Next case study          | Foot of each case study            | Cycles through the three projects                                                                        |
+| Sticky navigation        | Every main page                    | `position: sticky`; `scroll-padding-top` keeps anchored headings and focus below it (WCAG 2.4.11)        |
+| Reading progress bar     | Case studies and Academic pages    | Scroll position batched into one update per animation frame (`ScrollProgress.tsx`)                      |
+| Scroll reveal            | Project cards, case study sections | CSS scroll-driven animation (`animation-timeline: view()`); off when reduced motion is requested         |
+| Whole-card project links | Home page                          | The card's one link stretches over it with `::after`; the focus ring outlines the whole card (`:has()`)  |
+| Media reference download | Blog 1, References                 | `<a download>` to the PDF bundled by Vite; file type and size stated in the link                          |
+| Back to top              | Footer                             | In-page link to the main content                                                                         |
 
 Native HTML elements were chosen over custom JavaScript where they exist, because they come with keyboard and screen-reader support built in.
 
@@ -160,6 +167,7 @@ Vitest and Testing Library render the real app in a simulated browser (jsdom) an
 - each page sets its own browser-tab title
 - old Phase 1 addresses forward correctly, and unknown ones show the not-found page
 - the CV career history is no longer published
+- the group's media reference list is offered as a PDF download
 - the image viewer opens the full-size image and returns focus when closed
 - expandable sections start collapsed and open
 
@@ -180,7 +188,7 @@ Tests run on every push, and a failure stops deployment.
 Two details make a single-page app work on GitHub Pages:
 
 1. **Sub-path.** Pages serves the site from `/My-Portfolio-Project/`, so the build uses `--base=/<repo-name>/` and the router reads that base from `import.meta.env.BASE_URL` (`src/main.tsx`).
-2. **Deep links.** Pages has no rewrite rules, so the pipeline copies `index.html` to `404.html`. Refreshing `/about` then loads the app instead of GitHub's error page.
+2. **Deep links.** Pages has no rewrite rules, so the `pagePerRoute` plugin in `vite.config.ts` writes an `index.html` into each route's folder, with that page's title. Every page returns HTTP 200, and refreshing `/about` loads the page directly. The pipeline also copies `index.html` to `404.html`, so an unknown address still shows the site's own not-found page.
 
 In GitHub, **Settings → Pages → Source** must stay set to **GitHub Actions**.
 
@@ -188,11 +196,12 @@ In GitHub, **Settings → Pages → Source** must stay set to **GitHub Actions**
 
 ## Accessibility
 
-- All text colour pairings meet WCAG 2.1 AA. The lowest is sage on off-white in Academic projects (4.65:1); the main site's lowest is secondary text at 6.31:1.
-- One visible focus style everywhere: dark teal on light backgrounds (7.79:1), pale teal on navy (9.89:1).
+- All text colour pairings meet WCAG 2.2 AA. The lowest is sage on off-white in Academic and Creative Projects (4.65:1); the main site's lowest is secondary text at 6.31:1.
+- One visible focus style everywhere: dark teal on light backgrounds (7.79:1), pale teal on navy (9.89:1). Gold hover cues are used only for borders and underlines, never behind text.
 - A skip link on every page; focus moves to the new page after navigation so screen readers announce it.
+- The sticky header never hides a focused element or an anchored heading.
 - Every image has alt text, and diagrams can be opened full size.
-- Motion is reduced when the visitor's system asks for it.
+- Motion is reduced when the visitor's system asks for it: smooth scrolling, transitions and the scroll reveal are all switched off.
 
 ---
 

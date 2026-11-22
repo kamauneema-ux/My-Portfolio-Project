@@ -6,6 +6,7 @@
  */
 import cheetahFilm from "../assets/academic/cheetah-perfume.mp4";
 import cheetahPoster from "../assets/academic/cheetah-poster.jpg";
+import referenceListPdf from "../assets/academic/cheetah-media-reference-list.pdf";
 import productShoot from "../assets/academic/product-shoot.jpg";
 import perfumeBottle from "../assets/academic/reflection-perfume-bottle.jpg";
 import groupDiscussion from "../assets/academic/reflection-group-discussion.jpg";
@@ -212,14 +213,18 @@ export const groupProduction = {
     {
       id: "references",
       title: "References",
-      blocks: [
-        {
-          type: "paragraph",
-          text: "Music references and links attached separately.",
-        },
-      ],
+      // Shown as a download card for the group's media reference list.
+      blocks: [],
     },
   ] satisfies { id: string; title: string; blocks: Block[] }[],
+  referenceList: {
+    file: referenceListPdf,
+    fileName: "Cheetah-Media-Reference-List.pdf",
+    details: "PDF, 2 pages, 104 KB",
+    eyebrow: "Cheetah / Group production",
+    summary: "Music and sound effects from the Cheetah film.",
+    note: "Provided for academic reference",
+  },
 };
 
 /** Blog 2: my personal reflection on the same production. */
