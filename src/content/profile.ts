@@ -9,9 +9,12 @@ export const profile = {
 
 export const hero = {
   disciplines: "Service Design · User Design · Product Design · UX Research",
-  headline: "I design the services behind everyday transactions.",
+  headline: {
+    lead: "I design the services behind",
+    accent: "everyday transactions.",
+  },
   intro:
-    "At Safaricom, I redesigned how staff handled billing complaints and investigated why roaming customers struggled to activate M-PESA One App.",
+    "At Safaricom, I redesigned how staff handled billing complaints and investigated why roaming customers struggled to activate M\u2011PESA One App.",
 } as const;
 
 /** About page copy. */
