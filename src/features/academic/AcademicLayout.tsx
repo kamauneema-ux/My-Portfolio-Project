@@ -27,9 +27,14 @@ export default function AcademicLayout() {
         <div className="ac-wrap ac-header__bar">
           <Link to={routes.academic} className="ac-header__brand">
             Grace<span aria-hidden="true">.</span>
-            <span className="ac-header__section">Academic and creative projects</span>
+            <span className="ac-header__section">
+              Academic and creative projects
+            </span>
           </Link>
-          <nav aria-label="Academic and creative projects" className="ac-header__nav">
+          <nav
+            aria-label="Academic and creative projects"
+            className="ac-header__nav"
+          >
             <ul>
               {academicNav.map((item) => (
                 <li key={item.to}>
@@ -79,9 +84,13 @@ export default function AcademicLayout() {
           <p className="ac-footer__brand">
             Grace<span aria-hidden="true">.</span>
           </p>
-          <p>Creative exploration alongside a practice in service design and experience.</p>
+          <p>
+            Creative exploration alongside a practice in service design and
+            experience.
+          </p>
           <Link to={routes.home}>
-            Return to the professional portfolio <span aria-hidden="true">&#8599;</span>
+            Return to the professional portfolio{" "}
+            <span aria-hidden="true">&#8599;</span>
           </Link>
         </div>
       </footer>

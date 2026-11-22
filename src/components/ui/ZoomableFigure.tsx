@@ -21,7 +21,16 @@ type Props = {
  * readable on a phone. Uses the native <dialog> element, which gives a focus
  * trap and Escape-to-close for free; focus returns to the image afterwards.
  */
-export default function ZoomableFigure({ src, fullSrc, alt, width, height, caption, note, eager }: Props) {
+export default function ZoomableFigure({
+  src,
+  fullSrc,
+  alt,
+  width,
+  height,
+  caption,
+  note,
+  eager,
+}: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -86,7 +95,11 @@ export default function ZoomableFigure({ src, fullSrc, alt, width, height, capti
           <a href={fullSrc ?? src} target="_blank" rel="noopener noreferrer">
             Open in new tab
           </a>
-          <button type="button" onClick={closeViewer} className="zoom-viewer__close">
+          <button
+            type="button"
+            onClick={closeViewer}
+            className="zoom-viewer__close"
+          >
             Close<span className="visually-hidden"> full size image</span>
           </button>
         </div>

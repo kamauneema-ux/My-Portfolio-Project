@@ -350,6 +350,31 @@ main:focus,
   line-height: 1.5;
 }
 
+.about__eyebrow {
+  color: var(--navy);
+}
+
+.about__title {
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.about__title strong {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.about h2 {
+  margin-top: var(--space-l);
+}
+
+.about__rule {
+  width: 3rem;
+  margin: var(--space-l) 0 var(--space-m);
+  border: 0;
+  border-top: 2px solid var(--teal);
+}
+
 /* ---------- Zoomable figure ---------- */
 .zoom-figure {
   margin: var(--space-m) 0 0;

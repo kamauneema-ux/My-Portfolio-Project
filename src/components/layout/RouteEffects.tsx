@@ -10,7 +10,8 @@ function scrollToId(id: string, attemptsLeft = 30) {
     target.scrollIntoView();
     return;
   }
-  if (attemptsLeft > 0) requestAnimationFrame(() => scrollToId(id, attemptsLeft - 1));
+  if (attemptsLeft > 0)
+    requestAnimationFrame(() => scrollToId(id, attemptsLeft - 1));
 }
 
 /**
@@ -37,7 +38,8 @@ export default function RouteEffects() {
       isFirstRender.current = false;
       return;
     }
-    if (!hash) document.getElementById("main-content")?.focus({ preventScroll: true });
+    if (!hash)
+      document.getElementById("main-content")?.focus({ preventScroll: true });
   }, [pathname, hash]);
 
   return null;

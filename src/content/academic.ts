@@ -12,7 +12,13 @@ import groupDiscussion from "../assets/academic/reflection-group-discussion.jpg"
 import storyboardReview from "../assets/academic/reflection-storyboard-review.jpg";
 import colleagueScene from "../assets/academic/reflection-colleague-scene.jpg";
 
-export type Figure = { src: string; alt: string; caption: string; width: number; height: number };
+export type Figure = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+};
 
 export type Block =
   | { type: "paragraph"; text: string }
@@ -104,7 +110,12 @@ export const groupProduction = {
     "What started as a simple idea became an opportunity to explore how people connect with products through emotions, experiences and storytelling.",
     "Sometimes, the best way to communicate an experience is to let people discover it for themselves.",
   ],
-  tags: ["Creative concept", "Storytelling", "Collaboration", "Video production"],
+  tags: [
+    "Creative concept",
+    "Storytelling",
+    "Collaboration",
+    "Video production",
+  ],
   reportNote:
     "The production account below reproduces our group report, preserving the group\u2019s original text, images and creative decisions.",
   sections: [
@@ -122,7 +133,10 @@ export const groupProduction = {
         },
         {
           type: "figure",
-          figure: { ...figures.groupDiscussion, caption: "Figure 1. Group discussion during filming" },
+          figure: {
+            ...figures.groupDiscussion,
+            caption: "Figure 1. Group discussion during filming",
+          },
         },
       ],
     },
@@ -158,7 +172,10 @@ export const groupProduction = {
         },
         {
           type: "figure",
-          figure: { ...figures.productShoot, caption: "Figure 2. Cheetah perfume product shoot" },
+          figure: {
+            ...figures.productShoot,
+            caption: "Figure 2. Cheetah perfume product shoot",
+          },
         },
       ],
     },
@@ -193,7 +210,12 @@ export const groupProduction = {
     {
       id: "references",
       title: "References",
-      blocks: [{ type: "paragraph", text: "Music references and links attached separately." }],
+      blocks: [
+        {
+          type: "paragraph",
+          text: "Music references and links attached separately.",
+        },
+      ],
     },
   ] satisfies { id: string; title: string; blocks: Block[] }[],
 };
@@ -203,7 +225,10 @@ export const personalReflection = {
   title: "Creating Our Perfume Advertisement",
   subtitle: "Personal Reflection on Video Production",
   meta: "MSc coursework · Interactive Media · University of Limerick, 2026",
-  hero: { ...figures.groupDiscussion, caption: "On set / The process in motion" },
+  hero: {
+    ...figures.groupDiscussion,
+    caption: "On set / The process in motion",
+  },
   pullQuote:
     "The challenge was how to communicate the appeal of a scent that viewers could not smell.",
   account:
@@ -215,7 +240,10 @@ export const personalReflection = {
     },
     {
       type: "figure",
-      figure: { ...figures.perfumeBottle, caption: "Figure 1. A photo I took of the perfume during filming." },
+      figure: {
+        ...figures.perfumeBottle,
+        caption: "Figure 1. A photo I took of the perfume during filming.",
+      },
     },
     {
       type: "paragraph",
@@ -227,7 +255,10 @@ export const personalReflection = {
     },
     {
       type: "figure",
-      figure: { ...figures.groupDiscussion, caption: "Figure 2. Group discussion during production at my home." },
+      figure: {
+        ...figures.groupDiscussion,
+        caption: "Figure 2. Group discussion during production at my home.",
+      },
     },
     {
       type: "paragraph",
@@ -237,7 +268,8 @@ export const personalReflection = {
       type: "figure",
       figure: {
         ...figures.storyboardReview,
-        caption: "Figure 3. Reviewing the storyboard during filming in my home for feedback on a scene.",
+        caption:
+          "Figure 3. Reviewing the storyboard during filming in my home for feedback on a scene.",
       },
     },
     {
@@ -246,7 +278,10 @@ export const personalReflection = {
     },
     {
       type: "figure",
-      figure: { ...figures.colleagueScene, caption: "Figure 4. Preparing to film the colleague scene" },
+      figure: {
+        ...figures.colleagueScene,
+        caption: "Figure 4. Preparing to film the colleague scene",
+      },
     },
     {
       type: "paragraph",

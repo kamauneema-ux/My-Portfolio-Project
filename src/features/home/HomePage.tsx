@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import portrait from "../../assets/profile-hero.jpg";
-import { featuredProject, supportingProjects, type ProjectCard } from "../../content/projects";
+import {
+  featuredProject,
+  supportingProjects,
+  type ProjectCard,
+} from "../../content/projects";
 import { hero, profile } from "../../content/profile";
 import { anchors, routes } from "../../siteMap";
 import "./home.css";
@@ -47,7 +51,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="wrap work" id={anchors.work} aria-labelledby="work-title" tabIndex={-1}>
+      <section
+        className="wrap work"
+        id={anchors.work}
+        aria-labelledby="work-title"
+        tabIndex={-1}
+      >
         <h2 id="work-title">Selected work</h2>
 
         <article className="project project--featured">
@@ -80,7 +89,8 @@ export default function HomePage() {
           Cheetah Perfume, a short advertisement made with my MSc group.
         </p>
         <Link to={routes.academic} className="cta">
-          View academic and creative projects<span aria-hidden="true"> &rarr;</span>
+          View academic and creative projects
+          <span aria-hidden="true"> &rarr;</span>
         </Link>
       </section>
     </>

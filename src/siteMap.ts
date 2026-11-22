@@ -39,18 +39,21 @@ export const academicNav = [
 
 const pageTitles: Record<string, string> = {
   [routes.home]: "Service design, product design and UX research",
-  [routes.capa]: "Redesigning how Safaricom Business handled billing complaints",
+  [routes.capa]:
+    "Redesigning how Safaricom Business handled billing complaints",
   [routes.sacco]: "One digital SACCO app for members of multiple cooperatives",
   [routes.mpesa]: "Why was M-PESA One App hard to activate while roaming?",
   [routes.about]: "About",
   [routes.academic]: "Academic and creative projects",
   [routes.groupProduction]: "Cheetah Perfume: group production",
-  [routes.personalReflection]: "Creating our perfume advertisement: personal reflection",
+  [routes.personalReflection]:
+    "Creating our perfume advertisement: personal reflection",
 };
 
 /** Returns the browser-tab title for a path, falling back for unknown pages. */
 export function pageTitle(pathname: string): string {
-  const normalised = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+  const normalised =
+    pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
   return pageTitles[normalised] ?? "Page not found";
 }
 
@@ -65,5 +68,8 @@ export const legacyRedirects = [
   { from: "/experience", to: routes.about },
   { from: "/contact", to: `/#${anchors.contact}` },
   { from: "/writing", to: routes.academic },
-  { from: "/writing/creating-our-perfume-advertisement", to: routes.personalReflection },
+  {
+    from: "/writing/creating-our-perfume-advertisement",
+    to: routes.personalReflection,
+  },
 ] as const;

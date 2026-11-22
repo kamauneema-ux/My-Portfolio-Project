@@ -42,7 +42,11 @@ export default function SiteHeader() {
           {menuOpen ? "Close" : "Menu"}
         </button>
 
-        <ul id="site-nav-links" className="site-nav__links" data-open={menuOpen}>
+        <ul
+          id="site-nav-links"
+          className="site-nav__links"
+          data-open={menuOpen}
+        >
           {mainNav.map((item) => (
             <li key={item.label}>
               {item.to.startsWith("#") ? (

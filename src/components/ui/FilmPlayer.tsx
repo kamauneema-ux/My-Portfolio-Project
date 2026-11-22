@@ -17,7 +17,8 @@ export default function FilmPlayer() {
       aria-label={film.title}
     >
       <source src={film.src} type="video/mp4" />
-      Your browser cannot play this video. <a href={film.src}>Download the film</a> instead.
+      Your browser cannot play this video.{" "}
+      <a href={film.src}>Download the film</a> instead.
     </video>
   );
 }

@@ -14,7 +14,12 @@ type Props = {
  * Shared frame for every case study: back link, title, byline, the page's own
  * content, then a link to the next case study so a recruiter can keep going.
  */
-export default function CaseStudyLayout({ id, title, byline, children }: Props) {
+export default function CaseStudyLayout({
+  id,
+  title,
+  byline,
+  children,
+}: Props) {
   const index = caseStudyOrder.findIndex((project) => project.id === id);
   const next = caseStudyOrder[(index + 1) % caseStudyOrder.length];
 

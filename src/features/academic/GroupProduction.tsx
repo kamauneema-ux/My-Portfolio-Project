@@ -16,7 +16,9 @@ export default function GroupProduction() {
   return (
     <>
       <section className="ac-wrap ac-hero" aria-labelledby="group-title">
-        <p className="ac-eyebrow">Blog 01 / Group production / Academic project</p>
+        <p className="ac-eyebrow">
+          Blog 01 / Group production / Academic project
+        </p>
         <h1 id="group-title">
           Cheetah Perfume
           <br />
@@ -37,16 +39,25 @@ export default function GroupProduction() {
         </ul>
       </section>
 
-      <section className="ac-film" id={anchors.film} aria-labelledby="film-title" tabIndex={-1}>
+      <section
+        className="ac-film"
+        id={anchors.film}
+        aria-labelledby="film-title"
+        tabIndex={-1}
+      >
         <div className="ac-wrap">
           <div className="ac-film__head">
             <div>
-              <p className="ac-eyebrow ac-eyebrow--on-dark">01 / The final film</p>
+              <p className="ac-eyebrow ac-eyebrow--on-dark">
+                01 / The final film
+              </p>
               <h2 id="film-title">
                 Let the story <em>unfold.</em>
               </h2>
             </div>
-            <p className="ac-film__meta">{film.duration} &middot; Watch with sound</p>
+            <p className="ac-film__meta">
+              {film.duration} &middot; Watch with sound
+            </p>
           </div>
           <FilmPlayer />
           <p className="ac-film__caption">
@@ -72,9 +83,13 @@ export default function GroupProduction() {
                 <li key={section.id}>
                   <a
                     href={`#${section.id}`}
-                    aria-current={active === section.id ? "location" : undefined}
+                    aria-current={
+                      active === section.id ? "location" : undefined
+                    }
                   >
-                    <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                    <span aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     {section.title}
                   </a>
                 </li>
@@ -84,7 +99,11 @@ export default function GroupProduction() {
 
           <div className="ac-prose">
             {groupProduction.sections.map((section) => (
-              <section key={section.id} id={section.id} aria-labelledby={`${section.id}-title`}>
+              <section
+                key={section.id}
+                id={section.id}
+                aria-labelledby={`${section.id}-title`}
+              >
                 <h3 id={`${section.id}-title`}>{section.title}</h3>
                 <BlockList blocks={section.blocks} />
               </section>

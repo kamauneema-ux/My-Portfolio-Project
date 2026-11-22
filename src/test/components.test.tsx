@@ -5,19 +5,30 @@ import ZoomableFigure from "../components/ui/ZoomableFigure";
 import Disclosure from "../components/ui/Disclosure";
 
 describe("ZoomableFigure", () => {
-  const props = { src: "small.svg", fullSrc: "large.png", alt: "Staff journey", caption: "Caption text", width: 1200, height: 450 };
+  const props = {
+    src: "small.svg",
+    fullSrc: "large.png",
+    alt: "Staff journey",
+    caption: "Caption text",
+    width: 1200,
+    height: 450,
+  };
 
   it("opens the full-size image and returns focus when closed", async () => {
     const user = userEvent.setup();
     render(<ZoomableFigure {...props} />);
-    const trigger = screen.getByRole("button", { name: /open full size image: staff journey/i });
+    const trigger = screen.getByRole("button", {
+      name: /open full size image: staff journey/i,
+    });
 
     await user.click(trigger);
     const dialog = screen.getByRole("dialog", { hidden: true });
     expect(dialog).toHaveAttribute("open");
     expect(dialog.querySelector("img")).toHaveAttribute("src", "large.png");
 
-    await user.click(screen.getByRole("button", { name: /close/i, hidden: true }));
+    await user.click(
+      screen.getByRole("button", { name: /close/i, hidden: true }),
+    );
     expect(dialog).not.toHaveAttribute("open");
     expect(trigger).toHaveFocus();
   });
@@ -25,7 +36,10 @@ describe("ZoomableFigure", () => {
   it("keeps the caption and alt text for screen readers", () => {
     render(<ZoomableFigure {...props} />);
     expect(screen.getByText("Caption text")).toBeInTheDocument();
-    expect(screen.getAllByAltText("Staff journey")[0]).toHaveAttribute("src", "small.svg");
+    expect(screen.getAllByAltText("Staff journey")[0]).toHaveAttribute(
+      "src",
+      "small.svg",
+    );
   });
 });
 
@@ -37,7 +51,9 @@ describe("Disclosure", () => {
         <p>Hidden detail</p>
       </Disclosure>,
     );
-    const details = screen.getByText("Explore the full case study").closest("details")!;
+    const details = screen
+      .getByText("Explore the full case study")
+      .closest("details")!;
     expect(details.open).toBe(false);
 
     // Enter/Space on <summary> is native browser behaviour jsdom does not emulate; verified manually.

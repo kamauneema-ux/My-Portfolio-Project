@@ -11,7 +11,10 @@ export default function Disclosure({ label, children }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <details className="disclosure" onToggle={(event) => setOpen(event.currentTarget.open)}>
+    <details
+      className="disclosure"
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+    >
       <summary>
         <span className="disclosure__label">{label}</span>
         <span className="disclosure__state" aria-hidden="true">

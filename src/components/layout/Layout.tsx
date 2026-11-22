@@ -13,7 +13,9 @@ export default function Layout() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         {/* Shown while a lazily loaded page is fetched over the network. */}
-        <Suspense fallback={<p className="wrap page-loading">Loading&hellip;</p>}>
+        <Suspense
+          fallback={<p className="wrap page-loading">Loading&hellip;</p>}
+        >
           <Outlet />
         </Suspense>
       </main>

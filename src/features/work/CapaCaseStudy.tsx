@@ -2,8 +2,7 @@ import billingSvg from "../../assets/work/capa/billing-example.svg";
 import billingPng from "../../assets/work/capa/billing-example.png";
 // The staff-journey SVG export is mis-scaled (content drawn at 2x its viewBox), so the PNG is used.
 import journeyPng from "../../assets/work/capa/staff-journey.png";
-import resultsSvg from "../../assets/work/capa/early-results.svg";
-import resultsPng from "../../assets/work/capa/early-results.png";
+import firstReview from "../../assets/work/capa/first-review.webp";
 import personaSvg from "../../assets/work/capa/persona-map.svg";
 import personaPng from "../../assets/work/capa/persona-map.png";
 import beforeAfterSvg from "../../assets/work/capa/before-and-after.svg";
@@ -26,13 +25,13 @@ export default function CapaCaseStudy() {
       byline="Grace Muthoni Kamau · CAPA Product Owner"
     >
       <p className="case__intro">
-        I designed the staff journey for Corrective and Preventive Action (CAPA), from
-        investigating customer complaints to tracking the work needed to prevent them from
-        recurring.
+        I designed the staff journey for Corrective and Preventive Action
+        (CAPA), from investigating customer complaints to tracking the work
+        needed to prevent them from recurring.
       </p>
       <p className="case__outcome">
-        By the time I left Safaricom Business, credit notes had fallen by 33% across the wider
-        CAPA programme.
+        By the time I left Safaricom Business, credit notes had fallen by 33%
+        across the wider CAPA programme.
       </p>
 
       <section className="case__section" aria-labelledby="billing-example">
@@ -64,11 +63,10 @@ export default function CapaCaseStudy() {
       <section className="case__section" aria-labelledby="early-results">
         <h2 id="early-results">Early results from the tool</h2>
         <ZoomableFigure
-          src={resultsSvg}
-          fullSrc={resultsPng}
-          width={1800}
-          height={689}
-          alt="From 13 May to 30 June 2025, teams logged 88 requests, shared 36 corrective plans and shared 10 preventive plans."
+          src={firstReview}
+          width={2027}
+          height={776}
+          alt="What the first review revealed, 13 May to 30 June 2025, Enterprise CAPA tool: 100% of requests in the reporting window were logged; corrective plans were shared for 41% and preventive plans for 11% of requests logged. A logged case, a shared plan and a completed action measure three different things."
         />
       </section>
 
