@@ -148,19 +148,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        className="wrap home-grid home-epilogue reveal"
-        aria-labelledby="approach-title"
-      >
-        <p className="home-eyebrow" id="approach-title">
-          My approach
-        </p>
-        <p className="home-epilogue__text">
-          Participatory, inclusive and <em>sustainable.</em>
-        </p>
-        <Link to={routes.about} className="home-link wipe">
-          More about me <span aria-hidden="true">&rarr;</span>
-        </Link>
+      <section className="home-epilogue-band" aria-labelledby="approach-title">
+        <div className="wrap home-grid home-epilogue reveal">
+          <p className="home-eyebrow" id="approach-title">
+            My approach
+          </p>
+          <p className="home-epilogue__text">
+            Participatory, inclusive and <em>sustainable.</em>
+          </p>
+          <Link to={routes.about} className="home-link wipe">
+            More about me <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
       </section>
     </>
   );

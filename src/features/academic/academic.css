@@ -1,7 +1,9 @@
 /*
  * Academic projects theme: off-white, deep green and sage,
  * serif italic accents. Scoped under .academic so it cannot leak into the
- * professional portfolio. Contrast: ink 12.74:1, sage text 4.65:1 on --ac-bg.
+ * professional portfolio. Follows the site's light/dark theme.
+ * Light: ink 12.74:1, sage text 4.65:1 on --ac-bg.
+ * Dark: ink 14.99:1, body 9.45:1, sage 8.98:1 on --ac-bg.
  */
 .academic {
   --ac-ink: #1d3127;
@@ -10,26 +12,35 @@
   --ac-sage: #5c7560;
   --ac-sage-on-dark: #a9bfa9;
   --ac-body: #4b5a50;
+  --ac-band: #1d3127; /* film, quote and footer bands */
+  --ac-card: #fcfcf8;
   --ac-max: 76rem;
-
-  /* This section keeps its own light theme whatever the site theme is. */
-  color-scheme: light;
-  --bg: #f6f4ef;
-  --surface: #ece8df;
-  --text: #1a1e1b;
-  --text-muted: #545b55;
-  --accent: #1b6b47;
-  --on-accent: #ffffff;
-  --border: rgb(26 30 27 / 0.14);
-  --gold: #b8860b; /* hover cue, non-text, 3.09:1 */
-  --navy: #1a1e1b;
-  --teal: #1b6b47;
-  --muted: #545b55;
-  --line: rgb(26 30 27 / 0.14);
 
   min-height: 100vh;
   background: var(--ac-bg);
   color: var(--ac-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .academic {
+    --ac-ink: #e6ebe4;
+    --ac-bg: #121714;
+    --ac-pale: #26302a;
+    --ac-sage: #9dbfa2;
+    --ac-body: #b3beb5;
+    --ac-band: #0a0f0c;
+    --ac-card: #1a211c;
+  }
+}
+
+:root[data-theme="dark"] .academic {
+  --ac-ink: #e6ebe4;
+  --ac-bg: #121714;
+  --ac-pale: #26302a;
+  --ac-sage: #9dbfa2;
+  --ac-body: #b3beb5;
+  --ac-band: #0a0f0c;
+  --ac-card: #1a211c;
 }
 
 .academic :focus-visible {
@@ -155,6 +166,11 @@
   border-color: var(--gold);
   box-shadow: 0 0 0 1px var(--gold);
   text-decoration: none;
+}
+
+.academic .theme-toggle {
+  color: var(--ac-ink);
+  border-color: var(--ac-pale);
 }
 
 .ac-breadcrumb ol {
@@ -362,7 +378,7 @@
 /* ---------- Blog 1: film and report ---------- */
 .ac-film {
   padding-block: var(--space-xl);
-  background: var(--ac-ink);
+  background: var(--ac-band);
   color: var(--white);
 }
 
@@ -538,7 +554,7 @@
   padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.25rem, 3vw, 2.25rem);
   border: 1px solid var(--ac-pale);
   border-radius: 14px;
-  background: #fcfcf8;
+  background: var(--ac-card);
 }
 
 .ac-refs__icon {
@@ -629,7 +645,7 @@
 .academic .ac-pill--dark {
   background: var(--ac-ink);
   border-color: var(--ac-ink);
-  color: var(--white);
+  color: var(--ac-bg);
 }
 
 .academic .ac-pill:hover {
@@ -716,7 +732,7 @@
 .ac-quote {
   margin-block: var(--space-l);
   padding-block: var(--space-xl);
-  background: var(--ac-ink);
+  background: var(--ac-band);
   color: var(--white);
 }
 
@@ -758,7 +774,7 @@
 /* ---------- Footer ---------- */
 .ac-footer {
   padding-block: var(--space-l);
-  background: var(--ac-ink);
+  background: var(--ac-band);
   color: var(--white);
 }
 

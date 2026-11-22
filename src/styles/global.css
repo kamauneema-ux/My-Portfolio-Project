@@ -448,9 +448,16 @@ main:focus,
 .site-footer {
   margin-top: var(--space-6);
   padding-block: clamp(3rem, 7vw, 6rem) var(--space-4);
-  background: linear-gradient(to bottom, var(--bg), var(--surface) 14rem);
+  background: linear-gradient(to bottom, var(--bg), var(--tint) 12rem, var(--tint-deep));
   color: var(--text);
   border-top: 1px solid var(--border);
+}
+
+/* On the home page the green wash is already under way, so the footer continues it. */
+main:has(.home-epilogue-band) + .site-footer {
+  margin-top: 0;
+  border-top: 0;
+  background: linear-gradient(to bottom, var(--tint), var(--tint-deep));
 }
 
 .site-footer h2 {
@@ -609,7 +616,7 @@ main:focus,
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--figure-bg);
   cursor: zoom-in;
   overflow: hidden;
 }

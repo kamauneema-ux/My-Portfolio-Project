@@ -372,8 +372,7 @@
     to bottom,
     var(--bg),
     var(--surface) 22%,
-    var(--surface) 78%,
-    var(--bg)
+    var(--tint) 100%
   );
 }
 
@@ -426,10 +425,14 @@
 }
 
 /* ---------- Closing line ---------- */
+.home-epilogue-band {
+  padding-block: var(--space-6) 0;
+  background: var(--tint);
+}
+
 .home-epilogue {
   row-gap: var(--space-2);
   align-items: baseline;
-  padding-top: var(--space-section);
 }
 
 .home-epilogue__text {

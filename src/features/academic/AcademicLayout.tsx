@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { academicNav, anchors, routes } from "../../siteMap";
 import ScrollProgress from "../../components/ui/ScrollProgress";
+import ThemeToggle from "../../components/layout/ThemeToggle";
 import "./academic.css";
 
 const crumbs: Record<string, string> = {
@@ -49,6 +50,9 @@ export default function AcademicLayout() {
                 <Link to={routes.home} className="ac-header__exit">
                   Main portfolio <span aria-hidden="true">&#8599;</span>
                 </Link>
+              </li>
+              <li>
+                <ThemeToggle />
               </li>
             </ul>
           </nav>

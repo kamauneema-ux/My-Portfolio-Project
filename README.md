@@ -126,14 +126,15 @@ src/
 | ------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Full-size image viewer   | Every case study diagram           | Native `<dialog>` opened with `showModal()`: focus is trapped, Escape closes, focus returns to the image |
 | Expandable sections      | Supporting work on each case study | Native `<details>`/`<summary>`, with visible Show/Hide text                                              |
-| Mobile menu              | Header, below 640px                | A button with `aria-expanded`; closes on Escape or navigation                                            |
+| Mobile menu              | Header, below 860px                | A button with `aria-expanded`; closes on Escape or navigation                                            |
 | "In this story" contents | Blog 1                             | `IntersectionObserver` highlights the section being read (`useActiveSection.ts`)                         |
 | Video                    | Blog 1                             | Self-hosted MP4 with a poster frame; nothing downloads until play                                        |
 | Research map             | M-PESA case study                  | Ordered lists that reflow into a vertical timeline on phones                                             |
 | Next case study          | Foot of each case study            | Cycles through the three projects                                                                        |
 | Sticky navigation        | Every main page                    | `position: sticky`; `scroll-padding-top` keeps anchored headings and focus below it (WCAG 2.4.11)        |
 | Reading progress bar     | Case studies and Academic pages    | Scroll position batched into one update per animation frame (`ScrollProgress.tsx`)                      |
-| Scroll reveal            | Project cards, case study sections | CSS scroll-driven animation (`animation-timeline: view()`); off when reduced motion is requested         |
+| Scroll reveal            | Home page rows, case study sections | `IntersectionObserver` on the home page (`useReveal.ts`), CSS `animation-timeline: view()` elsewhere; movement only, off for reduced motion |
+| Light and dark theme     | Both headers                       | Follows the system setting; the toggle saves a choice to `localStorage` and sets `data-theme` on `<html>` (`useTheme.ts`) |
 | Whole-card project links | Home page                          | The card's one link stretches over it with `::after`; the focus ring outlines the whole card (`:has()`)  |
 | Media reference download | Blog 1, References                 | `<a download>` to the PDF bundled by Vite; file type and size stated in the link                          |
 | Back to top              | Footer                             | In-page link to the main content                                                                         |

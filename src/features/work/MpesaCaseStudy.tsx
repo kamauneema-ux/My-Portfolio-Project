@@ -24,9 +24,9 @@ const researchPaths = [
 ];
 
 /**
- * M-PESA One App case study. The two-path research map is built in
- * HTML: ordered lists that read correctly to a
- * screen reader and reflow into a vertical timeline on small screens.
+ * M-PESA One App case study. The two-path research map is built in HTML:
+ * ordered lists that read correctly to a screen reader and reflow into a
+ * vertical timeline on small screens.
  */
 export default function MpesaCaseStudy() {
   return (
