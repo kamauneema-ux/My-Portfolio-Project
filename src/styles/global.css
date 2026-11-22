@@ -111,12 +111,12 @@ main:focus,
 /*
  * Content eases up as it scrolls into view. CSS-only scroll timelines, so it
  * costs no JavaScript; browsers without support, and visitors who prefer
- * reduced motion, simply see everything in place.
+ * reduced motion, simply see everything in place. Movement only, no fade:
+ * text part-way through a fade would fall below its contrast ratio.
  */
 @keyframes reveal {
   from {
-    opacity: 0;
-    transform: translateY(1.5rem);
+    transform: translateY(2.5rem);
   }
 }
 
