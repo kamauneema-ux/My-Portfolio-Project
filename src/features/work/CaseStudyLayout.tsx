@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import ScrollProgress from "../../components/ui/ScrollProgress";
 import { caseStudyOrder } from "../../content/projects";
 import "./work.css";
 
@@ -25,6 +26,7 @@ export default function CaseStudyLayout({
 
   return (
     <article className="case wrap wrap--narrow">
+      <ScrollProgress />
       <Link to="/#work" className="case__back">
         <span aria-hidden="true">&larr; </span>All work
       </Link>

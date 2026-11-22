@@ -43,8 +43,13 @@ export default function SiteFooter() {
           </li>
         </ul>
         <p className="site-footer__legal">
-          &copy; {new Date().getFullYear()} {profile.name} &middot;{" "}
-          {profile.location}
+          <span>
+            &copy; {new Date().getFullYear()} {profile.name} &middot;{" "}
+            {profile.location}
+          </span>
+          <a href="#main-content">
+            Back to top<span aria-hidden="true"> &uarr;</span>
+          </a>
         </p>
       </div>
     </footer>

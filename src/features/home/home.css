@@ -59,11 +59,31 @@
   gap: var(--space-l);
 }
 
-.project__thumbnail {
-  width: 100%;
+.project__media {
+  display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--white);
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project__thumbnail {
+  width: 100%;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .project__media:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold);
+  }
+
+  .project__media:hover .project__thumbnail {
+    transform: scale(1.03);
+  }
 }
 
 .project-pair {

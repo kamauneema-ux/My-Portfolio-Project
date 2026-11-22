@@ -35,4 +35,5 @@
   --page-narrow: 64rem;
   --gutter: clamp(1.25rem, 5vw, 3.75rem);
   --radius: 10px;
+  --header-height: 4.5rem; /* sticky site header, used to offset anchor jumps */
 }

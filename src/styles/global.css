@@ -18,6 +18,16 @@ html {
   scroll-padding-top: var(--space-m);
 }
 
+/* Anchored headings and focused elements land below the sticky header (WCAG 2.4.11). */
+html:has(.site-header) {
+  scroll-padding-top: calc(var(--header-height) + var(--space-m));
+}
+
+::selection {
+  background: var(--teal-on-dark);
+  color: var(--navy);
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -52,6 +62,7 @@ h3 {
 
 p {
   max-width: 68ch;
+  text-wrap: pretty;
 }
 
 img,
@@ -93,7 +104,53 @@ main:focus,
   *::before,
   *::after {
     transition: none !important;
+    animation: none !important;
   }
+}
+
+/*
+ * Content eases up as it scrolls into view. CSS-only scroll timelines, so it
+ * costs no JavaScript; browsers without support, and visitors who prefer
+ * reduced motion, simply see everything in place.
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .project,
+    .creative,
+    .case__section,
+    .case__visual-stack .zoom-figure,
+    .case__next,
+    .ac-card,
+    .ac-report-section,
+    .ac-block {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+/* Reading progress along the top edge of long pages. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 3px;
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  background: var(--gold-on-dark);
+  transform-origin: left;
 }
 
 /* ---------- Utilities ---------- */
@@ -170,12 +227,21 @@ main:focus,
 .cta:hover {
   border-color: var(--gold);
   box-shadow: 0 4px 0 var(--gold);
-  transform: translateY(-2px);
   text-decoration: underline 2px var(--gold);
+}
+
+/* The lift only where a pointer can hover, so it never sticks after a tap. */
+@media (hover: hover) {
+  .cta:hover {
+    transform: translateY(-2px);
+  }
 }
 
 /* ---------- Header and navigation ---------- */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 15;
   background: var(--navy);
   color: var(--white);
 }
@@ -333,11 +399,26 @@ main:focus,
 }
 
 .site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-m);
+  max-width: none;
   margin: 0;
   padding-top: var(--space-m);
   border-top: 1px solid rgb(255 255 255 / 0.3);
   font-size: 0.9rem;
   color: #e3f3f1;
+}
+
+.site-footer__legal a {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.site-footer__legal a:hover {
+  text-decoration-color: var(--gold-on-dark);
+  text-decoration-thickness: 2px;
 }
 
 /* ---------- Simple text pages (About, 404) ---------- */

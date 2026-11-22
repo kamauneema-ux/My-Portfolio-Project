@@ -62,13 +62,21 @@ export default function HomePage() {
         <article className="project project--featured">
           <ProjectSummary project={featuredProject} />
           {thumbnail && (
-            <img
-              className="project__thumbnail"
-              src={thumbnail.src}
-              alt={thumbnail.alt}
-              width={1200}
-              height={400}
-            />
+            // A larger click target for mouse and touch; keyboard and screen-reader users get the CTA link.
+            <Link
+              to={featuredProject.to}
+              className="project__media"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <img
+                className="project__thumbnail"
+                src={thumbnail.src}
+                alt=""
+                width={1200}
+                height={400}
+              />
+            </Link>
           )}
         </article>
 

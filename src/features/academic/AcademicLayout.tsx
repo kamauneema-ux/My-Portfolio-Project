@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { academicNav, anchors, routes } from "../../siteMap";
-import ScrollProgress from "./ScrollProgress";
+import ScrollProgress from "../../components/ui/ScrollProgress";
 import "./academic.css";
 
 const crumbs: Record<string, string> = {

@@ -28,7 +28,7 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="ac-progress" aria-hidden="true">
+    <div className="scroll-progress" aria-hidden="true">
       <span style={{ transform: `scaleX(${progress})` }} />
     </div>
   );

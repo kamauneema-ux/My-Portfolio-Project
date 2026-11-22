@@ -548,20 +548,8 @@
   outline-color: var(--ac-ink);
 }
 
-/* Reading progress bar along the top edge. */
-.ac-progress {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 20;
-  height: 3px;
-  pointer-events: none;
-}
-
-.ac-progress span {
-  display: block;
-  height: 100%;
+.academic .scroll-progress span {
   background: var(--ac-sage);
-  transform-origin: left;
 }
 
 /* Overview hero: headline left, edition and introduction right. */
