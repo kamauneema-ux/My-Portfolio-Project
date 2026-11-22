@@ -3,7 +3,9 @@
 export const profile = {
   name: "Grace Muthoni Kamau",
   location: "Limerick, Ireland",
-  email: "kamauneema@gmail.com",
+  // Split so the address never appears as one string on the page or in the code.
+  emailUser: "kamauneema",
+  emailDomain: "gmail.com",
   linkedin: "https://www.linkedin.com/in/muthoni-kamau-55084839/",
 } as const;
 

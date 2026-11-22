@@ -1,5 +1,12 @@
+import type { MouseEvent } from "react";
 import { anchors } from "../../siteMap";
 import { contact, profile } from "../../content/profile";
+
+/** Opens the visitor's email app; the address is only put together on click. */
+function openEmail(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  window.location.href = `mailto:${profile.emailUser}@${profile.emailDomain}`;
+}
 
 /** Footer on every main page. Doubles as the Contact section the nav links to. */
 export default function SiteFooter() {
@@ -11,23 +18,15 @@ export default function SiteFooter() {
         <ul className="site-footer__links">
           <li>
             <a
-              href={`mailto:${profile.email}`}
+              href={`#${anchors.contact}`}
+              onClick={openEmail}
               className="contact-link contact-link--primary"
             >
-              <span className="contact-link__label">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m3 7 9 6 9-6" />
-                </svg>
-                Email Grace
+              <span className="contact-link__title wipe">Email Grace</span>
+              <span className="contact-link__arrow" aria-hidden="true">
+                &rarr;
               </span>
-              <span className="contact-link__address wipe">{profile.email}</span>
+              <span className="visually-hidden"> (opens your email app)</span>
             </a>
           </li>
           <li>
