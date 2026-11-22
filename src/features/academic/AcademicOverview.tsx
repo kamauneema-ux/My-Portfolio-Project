@@ -4,16 +4,23 @@ import { routes } from "../../siteMap";
 
 const cardLinks = [routes.groupProduction, routes.personalReflection];
 
-/** Academic projects landing page: the featured film and the two blogs about it. */
+/** Academic and Creative Projects landing page: the featured film and the two blogs about it. */
 export default function AcademicOverview() {
   return (
     <>
       <section className="ac-wrap ac-hero" aria-labelledby="academic-title">
         <p className="ac-eyebrow">{course}</p>
-        <h1 id="academic-title">
-          Ideas don&rsquo;t stay <em>on paper.</em>
-        </h1>
-        <p className="ac-lead">{overview.intro}</p>
+        <div className="ac-hero__split">
+          <h1 id="academic-title">
+            Ideas don&rsquo;t
+            <br />
+            stay <em>on paper.</em>
+          </h1>
+          <div className="ac-hero__side">
+            <p className="ac-edition">01 / Academic and Creative Projects</p>
+            <p className="ac-lead">{overview.intro}</p>
+          </div>
+        </div>
       </section>
 
       <section className="ac-wrap ac-feature" aria-labelledby="featured-title">
@@ -35,7 +42,7 @@ export default function AcademicOverview() {
             ))}
           </ul>
           <Link to={routes.groupProduction} className="ac-link">
-            Explore the group production <span aria-hidden="true">&rarr;</span>
+            Explore the group production <span aria-hidden="true">&#8599;</span>
           </Link>
         </div>
       </section>
@@ -51,32 +58,41 @@ export default function AcademicOverview() {
 
         <div className="ac-cards">
           {overview.cards.map((card, index) => (
-            <article key={card.number} className="ac-card">
-              <img
-                src={card.image.src}
-                alt={card.image.alt}
-                width={card.image.width}
-                height={card.image.height}
-                loading="lazy"
-              />
-              <p className="ac-eyebrow">
-                {card.number} / {card.kind}
-              </p>
+            // The whole card is one link, so the image and text are all clickable.
+            <Link key={card.number} to={cardLinks[index]} className="ac-card">
+              <span className="ac-card__image">
+                <img
+                  src={card.image.src}
+                  alt={card.image.alt}
+                  width={card.image.width}
+                  height={card.image.height}
+                  loading="lazy"
+                />
+              </span>
+              <span className="ac-card__row">
+                <span>
+                  {card.number} / {card.kind}
+                </span>
+                <span aria-hidden="true">&#8599;</span>
+              </span>
               <h3>{card.title}</h3>
               <p>{card.summary}</p>
-              <Link to={cardLinks[index]} className="ac-link">
-                {card.cta} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </article>
+              <span className="ac-card__cta">{card.cta}</span>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="ac-practice" aria-label="Part of my practice">
-        <div className="ac-wrap">
-          <p className="ac-eyebrow">Part of my practice</p>
-          <p className="ac-practice__text">{overview.practice}</p>
-        </div>
+      <section className="ac-wrap ac-epilogue" aria-labelledby="practice-title">
+        <p className="ac-eyebrow" id="practice-title">
+          Part of my practice
+        </p>
+        <p className="ac-epilogue__text">
+          {overview.practice.lead} <em>{overview.practice.focus}</em>
+        </p>
+        <Link to={routes.home} className="ac-link">
+          Return to the professional portfolio <span aria-hidden="true">&#8599;</span>
+        </Link>
       </section>
     </>
   );

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { academicNav, anchors, routes } from "../../siteMap";
+import ScrollProgress from "./ScrollProgress";
 import "./academic.css";
 
 const crumbs: Record<string, string> = {
@@ -9,7 +10,7 @@ const crumbs: Record<string, string> = {
 };
 
 /**
- * Shell for the Academic and creative projects section. It has its own quieter theme and
+ * Shell for the Academic and Creative Projects section. It has its own quieter theme and
  * sub-navigation so assessed coursework reads as a
  * separate space from the professional case studies.
  */
@@ -22,17 +23,18 @@ export default function AcademicLayout() {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
+      <ScrollProgress />
 
       <header className="ac-header">
         <div className="ac-wrap ac-header__bar">
           <Link to={routes.academic} className="ac-header__brand">
             Grace<span aria-hidden="true">.</span>
             <span className="ac-header__section">
-              Academic and creative projects
+              Academic and Creative Projects
             </span>
           </Link>
           <nav
-            aria-label="Academic and creative projects"
+            aria-label="Academic and Creative Projects"
             className="ac-header__nav"
           >
             <ul>
@@ -88,8 +90,8 @@ export default function AcademicLayout() {
             Creative exploration alongside a practice in service design and
             experience.
           </p>
-          <Link to={routes.home}>
-            Return to the professional portfolio{" "}
+          <Link to={routes.academic}>
+            Back to Academic and Creative Projects{" "}
             <span aria-hidden="true">&#8599;</span>
           </Link>
         </div>

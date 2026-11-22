@@ -40,7 +40,7 @@ export default function CapaCaseStudy() {
           src={billingSvg}
           fullSrc={billingPng}
           width={1800}
-          height={675}
+          height={600}
           alt="One account was billed for a previous product and its replacement."
           caption="One customer was billed for both their old product and its replacement. A credit note could correct the bill. What caused both charges?"
           eager

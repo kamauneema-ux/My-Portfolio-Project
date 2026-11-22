@@ -33,7 +33,7 @@ export const featuredProject: ProjectCard = {
 export const supportingProjects: ProjectCard[] = [
   {
     id: "sacco",
-    eyebrow: "Digital SACCO Solution · Product experience and testing",
+    eyebrow: "Digital SACCO Solution · Product Experience and Testing",
     title: "Could a member withdraw their money?",
     summary:
       "All 25 tests we ran passed. I flagged the withdrawal journey we still needed to verify.",
@@ -42,7 +42,7 @@ export const supportingProjects: ProjectCard[] = [
   },
   {
     id: "mpesa",
-    eyebrow: "M-PESA One App · UX research",
+    eyebrow: "M-PESA One App · UX Research",
     title: "Why was M-PESA One App hard to activate while roaming?",
     summary:
       "I worked with teams to trace the problem and followed up with customers after they could update the app for activation without roaming data charges.",

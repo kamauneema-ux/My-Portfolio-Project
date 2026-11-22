@@ -8,7 +8,7 @@ export const profile = {
 } as const;
 
 export const hero = {
-  disciplines: "Service design · Product design · UX research",
+  disciplines: "Service Design · User Design · Product Design · UX Research",
   headline: "I design the services behind everyday transactions.",
   intro:
     "At Safaricom, I redesigned how staff handled billing complaints and investigated why roaming customers struggled to activate M-PESA One App.",

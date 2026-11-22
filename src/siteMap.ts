@@ -26,11 +26,11 @@ export const anchors = {
 export const mainNav = [
   { label: "About", to: routes.about },
   { label: "Work", to: `${routes.home}#${anchors.work}` },
-  { label: "Academic and creative projects", to: routes.academic },
+  { label: "Academic and Creative Projects", to: routes.academic },
   { label: "Contact", to: `#${anchors.contact}` },
 ] as const;
 
-/** Sub-navigation shown only inside the Academic and creative projects section. */
+/** Sub-navigation shown only inside the Academic and Creative Projects section. */
 export const academicNav = [
   { label: "Overview", to: routes.academic },
   { label: "Group production", to: routes.groupProduction },
@@ -38,13 +38,13 @@ export const academicNav = [
 ] as const;
 
 const pageTitles: Record<string, string> = {
-  [routes.home]: "Service design, product design and UX research",
+  [routes.home]: "Service Design, User Design, Product Design and UX Research",
   [routes.capa]:
     "Redesigning how Safaricom Business handled billing complaints",
   [routes.sacco]: "One digital SACCO app for members of multiple cooperatives",
   [routes.mpesa]: "Why was M-PESA One App hard to activate while roaming?",
   [routes.about]: "About",
-  [routes.academic]: "Academic and creative projects",
+  [routes.academic]: "Academic and Creative Projects",
   [routes.groupProduction]: "Cheetah Perfume: group production",
   [routes.personalReflection]:
     "Creating our perfume advertisement: personal reflection",

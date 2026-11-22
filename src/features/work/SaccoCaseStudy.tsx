@@ -8,7 +8,7 @@ import ZoomableFigure from "../../components/ui/ZoomableFigure";
 import Disclosure from "../../components/ui/Disclosure";
 
 // The three original SACCO visuals share one canvas size.
-const size = { width: 1920, height: 1140 };
+const size = { width: 1920, height: 1040 };
 
 /**
  * MySacco case study. Each visual carries its own heading and explanation,

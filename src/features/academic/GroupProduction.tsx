@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { course, film, groupProduction } from "../../content/academic";
-import { anchors } from "../../siteMap";
+import { anchors, routes } from "../../siteMap";
 import FilmPlayer from "../../components/ui/FilmPlayer";
 import BlockList from "./BlockList";
 import useActiveSection from "./useActiveSection";
@@ -98,18 +99,39 @@ export default function GroupProduction() {
           </nav>
 
           <div className="ac-prose">
-            {groupProduction.sections.map((section) => (
+            {groupProduction.sections.map((section, index) => (
               <section
                 key={section.id}
                 id={section.id}
+                className="ac-report-section"
                 aria-labelledby={`${section.id}-title`}
               >
-                <h3 id={`${section.id}-title`}>{section.title}</h3>
-                <BlockList blocks={section.blocks} />
+                <div className="ac-rail" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span className="ac-rail__rule" />
+                </div>
+                <div>
+                  <h3 id={`${section.id}-title`}>{section.title}</h3>
+                  <BlockList blocks={section.blocks} />
+                </div>
               </section>
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="ac-wrap ac-next" aria-labelledby="next-title">
+        <div>
+          <p className="ac-eyebrow">Continue the story</p>
+          <h2 id="next-title">
+            What did I learn
+            <br />
+            <em>behind the scenes?</em>
+          </h2>
+        </div>
+        <Link to={routes.personalReflection} className="ac-pill">
+          Read Blog 2 <span aria-hidden="true">&#8599;</span>
+        </Link>
       </section>
     </>
   );

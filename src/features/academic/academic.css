@@ -260,32 +260,85 @@
   gap: var(--space-l);
 }
 
+.ac-card {
+  display: block;
+  text-decoration: none;
+}
+
+.ac-card__image {
+  display: block;
+  overflow: hidden;
+}
+
 .ac-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  margin-bottom: var(--space-m);
+  transition: transform 0.4s ease;
+}
+
+.ac-card:hover img {
+  transform: scale(1.045);
+}
+
+.ac-card__row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-m);
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--ac-pale);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ac-sage);
 }
 
 .ac-card h3 {
   font-size: 1.6rem;
 }
 
-.ac-card p:not(.ac-eyebrow) {
+.ac-card p {
   color: var(--ac-body);
 }
 
-.ac-practice {
-  padding-block: var(--space-l);
-  background: var(--ac-pale);
+.ac-card__cta {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.4rem;
 }
 
-/* Sage is only 4.08:1 on the pale band, so the label uses the body colour here. */
-.ac-practice .ac-eyebrow {
-  color: var(--ac-body);
+.ac-card:hover .ac-card__cta {
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 var(--gold);
 }
 
-.ac-practice__text {
+.ac-card:hover h3 {
+  text-decoration: underline 2px var(--gold);
+  text-underline-offset: 0.2em;
+}
+
+.ac-epilogue {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.6fr;
+  align-items: center;
+  gap: var(--space-l);
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--ac-pale);
+}
+
+.ac-epilogue .ac-eyebrow {
+  margin: 0;
+}
+
+/* As a grid item the link would stretch, carrying its underline across the column. */
+.ac-epilogue .ac-link {
+  justify-self: start;
+}
+
+.ac-epilogue__text {
   margin: 0;
   font-family: var(--font-serif);
   font-size: var(--step-1);
@@ -420,6 +473,114 @@
   margin-inline: auto;
 }
 
+/* Report sections: a numbered rail beside each section. */
+.ac-report-section {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: var(--space-m);
+}
+
+.ac-report-section h3 {
+  margin-top: 0;
+}
+
+.ac-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding-top: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ac-sage);
+}
+
+.ac-rail__rule {
+  width: 1px;
+  height: 2.75rem;
+  background: var(--ac-pale);
+}
+
+/* Closing link at the foot of each blog. */
+.ac-next {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-l);
+  padding-block: var(--space-xl);
+}
+
+.ac-next h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.ac-next--ruled {
+  border-top: 1px solid var(--ac-pale);
+}
+
+.academic .ac-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--ac-sage);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.academic .ac-pill--dark {
+  background: var(--ac-ink);
+  border-color: var(--ac-ink);
+  color: var(--white);
+}
+
+.academic .ac-pill:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.ac-pill--dark:focus-visible {
+  outline-color: var(--ac-ink);
+}
+
+/* Reading progress bar along the top edge. */
+.ac-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 3px;
+  pointer-events: none;
+}
+
+.ac-progress span {
+  display: block;
+  height: 100%;
+  background: var(--ac-sage);
+  transform-origin: left;
+}
+
+/* Overview hero: headline left, edition and introduction right. */
+.ac-hero__split {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: var(--space-l);
+}
+
+.ac-edition {
+  margin: 0 0 var(--space-s);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ac-sage);
+}
+
 /* ---------- Blog 2: reflection ---------- */
 .ac-reflection-hero {
   display: grid;
@@ -439,9 +600,16 @@
   color: var(--ac-body);
 }
 
-.ac-meta {
+.ac-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: var(--space-l) 0 0;
+  padding: 0;
+  list-style: none;
   font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ac-sage);
 }
@@ -487,18 +655,23 @@
   color: var(--ac-body);
 }
 
-.numbered {
-  position: relative;
-  padding-left: 3rem;
+/* Blog 2: a number beside each paragraph, with its photos inside the same block. */
+.ac-block {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--space-m);
+  padding-bottom: var(--space-m);
 }
 
-.numbered__marker {
-  position: absolute;
-  left: 0;
-  top: 0.2rem;
+.ac-block__count {
+  padding-top: 0.3rem;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--ac-sage);
+}
+
+.ac-block__content p {
+  margin-top: 0;
 }
 
 /* ---------- Footer ---------- */
@@ -546,7 +719,9 @@
   .ac-blogs__intro,
   .ac-cards,
   .ac-story,
-  .ac-reflection-hero {
+  .ac-reflection-hero,
+  .ac-hero__split,
+  .ac-epilogue {
     grid-template-columns: 1fr;
   }
 
@@ -559,7 +734,9 @@
     gap: var(--space-l);
   }
 
-  .numbered {
-    padding-left: 2.25rem;
+  .ac-report-section,
+  .ac-block {
+    grid-template-columns: 1.75rem 1fr;
+    gap: var(--space-s);
   }
 }

@@ -67,7 +67,7 @@ export default function HomePage() {
               src={thumbnail.src}
               alt={thumbnail.alt}
               width={1200}
-              height={450}
+              height={400}
             />
           )}
         </article>
@@ -82,14 +82,14 @@ export default function HomePage() {
       </section>
 
       <section className="wrap creative" aria-labelledby="creative-title">
-        <h2 id="creative-title">Creative work</h2>
+        <h2 id="creative-title">Academic and Creative Projects</h2>
         <p>
           <span className="eyebrow">Videography</span>
           <br />
           Cheetah Perfume, a short advertisement made with my MSc group.
         </p>
         <Link to={routes.academic} className="cta">
-          View academic and creative projects
+          View Academic and Creative Projects
           <span aria-hidden="true"> &rarr;</span>
         </Link>
       </section>

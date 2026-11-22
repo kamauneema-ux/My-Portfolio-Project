@@ -32,12 +32,12 @@ npm install     # first time only
 npm run dev     # start the dev server, usually http://localhost:5173
 ```
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Development server with instant reload |
-| `npm test` | Runs the automated tests once |
-| `npm run lint` | Checks the code with ESLint |
-| `npm run build` | Type-checks, then builds the site into `dist/` |
+| Command           | What it does                                       |
+| ----------------- | -------------------------------------------------- |
+| `npm run dev`     | Development server with instant reload             |
+| `npm test`        | Runs the automated tests once                      |
+| `npm run lint`    | Checks the code with ESLint                        |
+| `npm run build`   | Type-checks, then builds the site into `dist/`     |
 | `npm run preview` | Serves the built site, to check a production build |
 
 To preview exactly what GitHub Pages serves, including its sub-path:
@@ -55,16 +55,16 @@ Then open http://localhost:4173/My-Portfolio-Project/.
 
 ## What is on the site
 
-| Address | Page |
-|---|---|
-| `/` | Home: introduction, three projects, creative work |
-| `/work/capa` | Case study: redesigning how Safaricom Business handled billing complaints |
-| `/work/digital-sacco` | Case study: one digital SACCO app for members of multiple cooperatives |
-| `/work/mpesa-one-app` | Case study: why M-PESA One App was hard to activate while roaming |
-| `/about` | Background |
-| `/academic-projects` | Academic and creative projects overview: one film, two perspectives |
-| `/academic-projects/group-production` | Blog 1: the film and the group report |
-| `/academic-projects/personal-reflection` | Blog 2: personal reflection |
+| Address                                  | Page                                                                      |
+| ---------------------------------------- | ------------------------------------------------------------------------- |
+| `/`                                      | Home: introduction, three projects, creative work                         |
+| `/work/capa`                             | Case study: redesigning how Safaricom Business handled billing complaints |
+| `/work/digital-sacco`                    | Case study: one digital SACCO app for members of multiple cooperatives    |
+| `/work/mpesa-one-app`                    | Case study: why M-PESA One App was hard to activate while roaming         |
+| `/about`                                 | Background                                                                |
+| `/academic-projects`                     | Academic and creative projects overview: one film, two perspectives       |
+| `/academic-projects/group-production`    | Blog 1: the film and the group report                                     |
+| `/academic-projects/personal-reflection` | Blog 2: personal reflection                                               |
 
 **Contact** is the footer of every main page, reached from the navigation.
 
@@ -121,15 +121,15 @@ src/
 
 ## How the interactive parts work
 
-| Feature | Where | Technique |
-|---|---|---|
-| Full-size image viewer | Every case study diagram | Native `<dialog>` opened with `showModal()`: focus is trapped, Escape closes, focus returns to the image |
-| Expandable sections | Supporting work on each case study | Native `<details>`/`<summary>`, with visible Show/Hide text |
-| Mobile menu | Header, below 640px | A button with `aria-expanded`; closes on Escape or navigation |
-| "In this story" contents | Blog 1 | `IntersectionObserver` highlights the section being read (`useActiveSection.ts`) |
-| Video | Blog 1 | Self-hosted MP4 with a poster frame; nothing downloads until play |
-| Research map | M-PESA case study | Ordered lists that reflow into a vertical timeline on phones |
-| Next case study | Foot of each case study | Cycles through the three projects |
+| Feature                  | Where                              | Technique                                                                                                |
+| ------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Full-size image viewer   | Every case study diagram           | Native `<dialog>` opened with `showModal()`: focus is trapped, Escape closes, focus returns to the image |
+| Expandable sections      | Supporting work on each case study | Native `<details>`/`<summary>`, with visible Show/Hide text                                              |
+| Mobile menu              | Header, below 640px                | A button with `aria-expanded`; closes on Escape or navigation                                            |
+| "In this story" contents | Blog 1                             | `IntersectionObserver` highlights the section being read (`useActiveSection.ts`)                         |
+| Video                    | Blog 1                             | Self-hosted MP4 with a poster frame; nothing downloads until play                                        |
+| Research map             | M-PESA case study                  | Ordered lists that reflow into a vertical timeline on phones                                             |
+| Next case study          | Foot of each case study            | Cycles through the three projects                                                                        |
 
 Native HTML elements were chosen over custom JavaScript where they exist, because they come with keyboard and screen-reader support built in.
 
@@ -137,14 +137,14 @@ Native HTML elements were chosen over custom JavaScript where they exist, becaus
 
 ## Editing content
 
-| To change… | Edit |
-|---|---|
-| Hero, About or contact wording | `src/content/profile.ts` |
-| A project card on the home page | `src/content/projects.ts` |
-| Blog text, captions or alt text | `src/content/academic.ts` |
-| A case study page | `src/features/work/<Name>CaseStudy.tsx` |
-| A page address or tab title | `src/siteMap.ts` |
-| A colour or spacing value | `src/styles/tokens.css` |
+| To change…                      | Edit                                    |
+| ------------------------------- | --------------------------------------- |
+| Hero, About or contact wording  | `src/content/profile.ts`                |
+| A project card on the home page | `src/content/projects.ts`               |
+| Blog text, captions or alt text | `src/content/academic.ts`               |
+| A case study page               | `src/features/work/<Name>CaseStudy.tsx` |
+| A page address or tab title     | `src/siteMap.ts`                        |
+| A colour or spacing value       | `src/styles/tokens.css`                 |
 
 ---
 
@@ -171,11 +171,11 @@ Tests run on every push, and a failure stops deployment.
 
 `.github/workflows/deploy-pages.yml` runs on GitHub Actions.
 
-| Trigger | What runs |
-|---|---|
-| Push to `main` | Install → lint → test → build → deploy to GitHub Pages |
-| Pull request to `main` | Install → lint → test → build (no deploy) |
-| Manual (Actions → Run workflow) | Full pipeline |
+| Trigger                         | What runs                                              |
+| ------------------------------- | ------------------------------------------------------ |
+| Push to `main`                  | Install → lint → test → build → deploy to GitHub Pages |
+| Pull request to `main`          | Install → lint → test → build (no deploy)              |
+| Manual (Actions → Run workflow) | Full pipeline                                          |
 
 Two details make a single-page app work on GitHub Pages:
 
@@ -198,14 +198,14 @@ In GitHub, **Settings → Pages → Source** must stay set to **GitHub Actions**
 
 ## Built with
 
-| | |
-|---|---|
-| React 19 | Interface |
-| React Router 7 | Client-side routing |
-| TypeScript 5.8 | Types for all content and components |
-| Vite 6 | Development server and build |
-| Vitest 4 + Testing Library | Automated tests |
-| ESLint 9 | Code checks |
-| GitHub Actions + Pages | Pipeline and hosting |
+|                            |                                      |
+| -------------------------- | ------------------------------------ |
+| React 19                   | Interface                            |
+| React Router 7             | Client-side routing                  |
+| TypeScript 5.8             | Types for all content and components |
+| Vite 6                     | Development server and build         |
+| Vitest 4 + Testing Library | Automated tests                      |
+| ESLint 9                   | Code checks                          |
+| GitHub Actions + Pages     | Pipeline and hosting                 |
 
 Three runtime dependencies (React, React DOM, React Router). No UI framework: all styling is hand-written CSS.

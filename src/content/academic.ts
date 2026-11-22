@@ -97,8 +97,10 @@ export const overview = {
       image: figures.storyboardReview,
     },
   ],
-  practice:
-    "Exploring creative media alongside my work in service design, research and experience.",
+  practice: {
+    lead: "Exploring creative media alongside my work in",
+    focus: "service design, research and experience.",
+  },
 } as const;
 
 /** Blog 1: the group's production account. */
@@ -224,9 +226,14 @@ export const groupProduction = {
 export const personalReflection = {
   title: "Creating Our Perfume Advertisement",
   subtitle: "Personal Reflection on Video Production",
-  meta: "MSc coursework · Interactive Media · University of Limerick, 2026",
+  meta: [
+    "Grace Muthoni Kamau",
+    "CS6041 · Interactive Media Project / Workshop 1",
+    "University of Limerick · 2026/2027",
+  ],
   hero: {
     ...figures.groupDiscussion,
+    alt: "The group discussing production decisions on set",
     caption: "On set / The process in motion",
   },
   pullQuote:

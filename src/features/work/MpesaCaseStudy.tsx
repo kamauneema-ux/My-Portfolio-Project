@@ -33,7 +33,7 @@ export default function MpesaCaseStudy() {
     <CaseStudyLayout
       id="mpesa"
       title="Why was M-PESA One App hard to activate while roaming?"
-      byline="Grace Muthoni Kamau · Safaricom · UX research"
+      byline="Grace Muthoni Kamau · Safaricom · UX Research"
     >
       <p className="case__intro">
         When M-PESA and MySafaricom services came together, I studied the

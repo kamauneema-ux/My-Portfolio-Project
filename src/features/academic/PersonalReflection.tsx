@@ -19,7 +19,11 @@ export default function PersonalReflection() {
             Creating Our Perfume <em>Advertisement.</em>
           </h1>
           <p className="ac-subtitle">{blog.subtitle}</p>
-          <p className="ac-meta">{blog.meta}</p>
+          <ul className="ac-author" aria-label="Author and course">
+            {blog.meta.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
         </div>
         <figure className="ac-reflection-hero__photo">
           <img
@@ -58,6 +62,20 @@ export default function PersonalReflection() {
           <BlockList blocks={blog.blocks} numbered />
         </div>
       </div>
+
+      <section className="ac-wrap ac-next ac-next--ruled" aria-labelledby="pair-title">
+        <div>
+          <p className="ac-eyebrow">Two sides of one project</p>
+          <h2 id="pair-title">
+            The film shows what we made.
+            <br />
+            <em>The reflection tells my story.</em>
+          </h2>
+        </div>
+        <Link to={routes.groupProduction} className="ac-pill ac-pill--dark">
+          See the group production <span aria-hidden="true">&#8599;</span>
+        </Link>
+      </section>
     </>
   );
 }
