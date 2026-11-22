@@ -61,21 +61,21 @@ export default function HomePage() {
   return (
     <>
       <section className="wrap home-hero" aria-labelledby="hero-title">
-        <p className="home-eyebrow">{hero.disciplines}</p>
+        <div className="home-hero__byline">
+          <img
+            className="home-hero__portrait"
+            src={portrait}
+            alt={`Portrait of ${profile.name}`}
+            width={680}
+            height={850}
+          />
+          <p className="home-eyebrow">{hero.disciplines}</p>
+        </div>
         <div className="home-hero__split">
           <h1 id="hero-title">
             {hero.headline.lead} <em>{hero.headline.accent}</em>
           </h1>
-          <div className="home-hero__side">
-            <img
-              className="home-hero__portrait"
-              src={portrait}
-              alt={`Portrait of ${profile.name}`}
-              width={680}
-              height={850}
-            />
-            <p className="home-hero__lead">{hero.intro}</p>
-          </div>
+          <p className="home-hero__lead">{hero.intro}</p>
         </div>
         <dl className="home-facts">
           <div>

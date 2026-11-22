@@ -51,7 +51,18 @@
 
 /* ---------- Hero ---------- */
 .home-hero {
-  padding-block: var(--space-xl) var(--space-l);
+  padding-block: var(--space-l) var(--space-m);
+}
+
+.home-hero__byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  margin-bottom: var(--space-m);
+}
+
+.home-hero__byline .home-eyebrow {
+  margin: 0;
 }
 
 .home-hero__split {
@@ -62,23 +73,24 @@
 }
 
 .home-hero h1 {
-  max-width: 13ch;
+  max-width: 14ch;
   margin: 0;
-  font-size: clamp(2.6rem, 6.4vw, 5.25rem);
+  font-size: clamp(2.4rem, 5vw, 4.1rem);
   line-height: 1.02;
   letter-spacing: -0.045em;
 }
 
 .home-hero__portrait {
-  width: 100%;
-  max-width: 200px;
-  aspect-ratio: 4 / 5;
+  flex: none;
+  width: 4.5rem;
+  height: 4.5rem;
   object-fit: cover;
-  border-radius: 4px;
+  object-position: center 20%;
+  border-radius: 50%;
 }
 
 .home-hero__lead {
-  margin: var(--space-m) 0 0;
+  margin: 0;
   font-size: var(--step-1);
   line-height: 1.5;
   color: var(--muted);
@@ -88,7 +100,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-m);
-  margin: var(--space-xl) 0 0;
+  margin: var(--space-l) 0 0;
   padding-top: var(--space-s);
   border-top: 1px solid var(--line);
 }
@@ -109,7 +121,7 @@
 
 /* ---------- Selected work ---------- */
 .home-work {
-  padding-block: var(--space-xl);
+  padding-block: var(--space-l) var(--space-xl);
   border-top: 1px solid var(--line);
 }
 
@@ -117,6 +129,10 @@
 .home-academic h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: -0.04em;
+}
+
+.home-section-head h2 {
+  margin-bottom: 0;
 }
 
 .work-card {
@@ -217,7 +233,7 @@
   grid-template-columns: 1.5fr 1fr;
   align-items: center;
   gap: var(--space-l);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m);
 }
 
 .work-card--featured .work-card__row {
@@ -326,10 +342,6 @@
   .home-academic__grid,
   .home-epilogue {
     grid-template-columns: 1fr;
-  }
-
-  .home-hero__portrait {
-    max-width: 140px;
   }
 
   .home-facts {
