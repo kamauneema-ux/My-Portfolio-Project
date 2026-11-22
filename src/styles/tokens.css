@@ -1,39 +1,98 @@
 /*
  * Design tokens: every colour, size and spacing value the site uses.
  * Contrast ratios are measured against the background each is used on.
+ *
+ * Palette: warm paper and ink with one deep green accent (a quieter nod to
+ * Safaricom green). Light is the default; dark follows the system setting
+ * or the header toggle, which sets data-theme on <html>.
  */
 :root {
-  /* Colour */
-  --navy: #112b42; /* headings and body text, 13.77:1 on --bg */
-  --navy-line: #537082; /* dividers on navy only */
-  --teal-on-dark: #88e5df; /* links and focus on navy, 9.89:1 */
-  --teal: #125857; /* links, eyebrows and focus on light, 7.79:1 on --bg */
-  --muted: #4a5f70; /* secondary text, 6.31:1 on --bg */
-  --bg: #faf9f6;
-  --white: #ffffff;
-  /* Hover gold, used only for underlines and borders so it never sits behind text. */
-  --gold: #b8860b; /* on light backgrounds, 3.09:1 */
-  --gold-on-dark: #f2c14e; /* on navy 8.64:1, on teal 4.89:1 */
-  --line: #bccbc9; /* decorative rules only, never text */
-  --surface: #eef3f2;
+  color-scheme: light;
+  --bg: #f6f4ef; /* warm off-white page */
+  --surface: #ece8df; /* one step off --bg: cards, bands, hover */
+  --text: #1a1e1b; /* 15.34:1 on --bg, 13.79:1 on --surface */
+  --text-muted: #545b55; /* 6.36:1 on --bg, 5.72:1 on --surface */
+  --accent: #1b6b47; /* links, CTAs, focus: 5.90:1 on --bg, 5.30:1 on --surface */
+  --on-accent: #ffffff; /* text on an accent fill, 6.48:1 */
+  --border: rgb(26 30 27 / 0.14); /* hairlines only, never text */
+  --shadow: 0 18px 40px -24px rgb(26 30 27 / 0.35);
 
-  /* Type */
+  /* Inverse panels (image viewer bar, zoom hint) stay dark in both themes. */
+  --inverse-bg: #14201a;
+  --inverse-text: #f2f0ea; /* 14.73:1 */
+  --inverse-accent: #8ad9b1; /* 10.10:1 */
+  --inverse-border: rgb(242 240 234 / 0.22);
+
+  /* Earlier token names, kept so existing stylesheets follow the palette. */
+  --navy: var(--text);
+  --navy-line: var(--inverse-border);
+  --teal: var(--accent);
+  --teal-on-dark: var(--inverse-accent);
+  --muted: var(--text-muted);
+  --gold: var(--accent);
+  --gold-on-dark: var(--inverse-accent);
+  --line: var(--border);
+  --white: #ffffff;
+
+  /* Type: one sans family, plus the existing Georgia italic for accents. */
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
   --font-serif: Georgia, "Times New Roman", serif;
   --step-0: 1.125rem; /* 18px body */
   --step-1: 1.375rem;
   --step-2: clamp(1.6rem, 3vw, 2.25rem);
   --step-3: clamp(2.25rem, 4.5vw, 3.75rem);
+  --step-display: clamp(2.75rem, 5.4vw, 4.6rem);
 
-  /* Space and layout */
-  --space-xs: 0.5rem;
-  --space-s: 1rem;
-  --space-m: 1.5rem;
+  /* 8px spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+  --space-section: clamp(4rem, 10vw, 9rem);
+  --space-xs: var(--space-1);
+  --space-s: var(--space-2);
+  --space-m: var(--space-3);
   --space-l: 2.5rem;
-  --space-xl: 4rem;
-  --page-max: 72rem; /* ~1150px */
+  --space-xl: var(--space-6);
+
+  /* Layout: 12-column grid inside a 1200px frame */
+  --page-max: 75rem;
   --page-narrow: 64rem;
   --gutter: clamp(1.25rem, 5vw, 3.75rem);
+  --grid-gap: clamp(1rem, 2.5vw, 2rem);
   --radius: 10px;
+  --radius-l: 18px;
   --header-height: 4.5rem; /* sticky site header, used to offset anchor jumps */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Dark palette: soft charcoal, never pure black or white. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121513;
+    --surface: #1b201c;
+    --text: #ecebe5; /* 15.39:1 on --bg, 13.84:1 on --surface */
+    --text-muted: #a6aca5; /* 7.94:1 on --bg, 7.14:1 on --surface */
+    --accent: #7dd6aa; /* 10.57:1 on --bg, 9.50:1 on --surface */
+    --on-accent: #0f1a14; /* 10.25:1 */
+    --border: rgb(236 235 229 / 0.14);
+    --shadow: 0 18px 40px -24px rgb(0 0 0 / 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121513;
+  --surface: #1b201c;
+  --text: #ecebe5;
+  --text-muted: #a6aca5;
+  --accent: #7dd6aa;
+  --on-accent: #0f1a14;
+  --border: rgb(236 235 229 / 0.14);
+  --shadow: 0 18px 40px -24px rgb(0 0 0 / 0.7);
 }

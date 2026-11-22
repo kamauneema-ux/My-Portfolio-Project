@@ -13,7 +13,6 @@
 }
 
 html {
-  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-m);
 }
@@ -24,17 +23,18 @@ html:has(.site-header) {
 }
 
 ::selection {
-  background: var(--teal-on-dark);
-  color: var(--navy);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 body {
   margin: 0;
   min-width: 320px;
   background: var(--bg);
-  color: var(--navy);
+  color: var(--text);
   font: var(--step-0) / 1.6 var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -122,9 +122,6 @@ main:focus,
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .work-card,
-    .home-academic__grid,
-    .home-epilogue,
     .case__section,
     .case__visual-stack .zoom-figure,
     .case__next,
@@ -135,6 +132,18 @@ main:focus,
       animation-timeline: view();
       animation-range: entry 0% entry 60%;
     }
+  }
+}
+
+/* Home page: IntersectionObserver adds .is-visible (useReveal). Movement only, as above. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    transform: translateY(2rem);
+    transition: transform 0.8s var(--ease-out);
+  }
+
+  .reveal.is-visible {
+    transform: none;
   }
 }
 
@@ -150,7 +159,7 @@ main:focus,
 .scroll-progress span {
   display: block;
   height: 100%;
-  background: var(--gold-on-dark);
+  background: var(--accent);
   transform-origin: left;
 }
 
@@ -179,10 +188,12 @@ main:focus,
   position: absolute;
   left: var(--space-s);
   top: -100px;
-  z-index: 10;
+  z-index: 30;
   padding: var(--space-xs) var(--space-s);
-  background: var(--white);
-  color: var(--navy);
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -208,34 +219,51 @@ main:focus,
 
 /* ---------- Call-to-action link ----------
  * Every "View … case study" style action looks the same, for consistency.
- * Hover adds a gold border, gold underline and a slight lift; the text colour stays put.
+ * Hover shifts the surface, underlines the label and lifts slightly.
  */
 .cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin-top: var(--space-s);
-  padding: 0.55rem 0.95rem;
-  border: 2px solid var(--teal);
-  border-radius: 6px;
-  color: var(--teal);
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
   font-weight: 700;
   text-decoration: none;
   transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cta:hover {
-  border-color: var(--gold);
-  box-shadow: 0 4px 0 var(--gold);
-  text-decoration: underline 2px var(--gold);
+  background: var(--surface);
+  text-decoration: underline 2px var(--accent);
+  text-underline-offset: 0.25em;
 }
 
 /* The lift only where a pointer can hover, so it never sticks after a tap. */
 @media (hover: hover) {
   .cta:hover {
     transform: translateY(-2px);
+    box-shadow: var(--shadow);
   }
+}
+
+/* Link underline that wipes in from the left. */
+.wipe {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px
+    no-repeat;
+  transition: background-size 0.35s var(--ease-out);
+}
+
+.wipe:hover,
+.wipe:focus-visible,
+.wipe.active {
+  background-size: 100% 1px;
 }
 
 /* ---------- Header and navigation ---------- */
@@ -243,8 +271,10 @@ main:focus,
   position: sticky;
   top: 0;
   z-index: 15;
-  background: var(--navy);
-  color: var(--white);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: saturate(1.4) blur(12px);
 }
 
 .site-nav {
@@ -252,70 +282,135 @@ main:focus,
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-s);
-  padding-block: 1.25rem;
-  border-bottom: 1px solid var(--navy-line);
+  gap: var(--space-1) var(--space-3);
+  min-height: var(--header-height);
 }
 
 .site-nav a,
 .site-nav button {
-  color: var(--white);
-}
-
-.site-nav :focus-visible {
-  outline-color: var(--teal-on-dark);
+  color: var(--text);
 }
 
 .site-nav__name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
+}
+
+.site-nav__end {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .site-nav__links {
   display: flex;
-  gap: var(--space-m);
+  align-items: center;
+  gap: var(--space-3);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .site-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
-  padding-block: 0.25rem;
-  border-bottom: 2px solid transparent;
 }
 
 .site-nav__links a.active {
-  color: var(--teal-on-dark);
-  border-bottom-color: currentColor;
+  color: var(--accent);
 }
 
-.site-nav__links a:hover {
-  border-bottom-color: var(--gold-on-dark);
+/* "Work" doubles as the header's call to action. */
+.site-nav__links a.site-nav__cta {
+  padding-inline: 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: none;
+  color: var(--accent);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-nav__links a.site-nav__cta:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.site-nav__toggle,
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-nav__toggle:hover,
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--surface);
 }
 
 .site-nav__toggle {
   display: none;
-  padding: 0.4rem 0.9rem;
-  border: 2px solid var(--teal-on-dark);
-  border-radius: 6px;
-  background: transparent;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
+  padding-inline: 1rem;
 }
 
-/* Below 640px the links collapse behind the Menu button. */
-@media (max-width: 640px) {
+.theme-toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.theme-toggle__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.site-nav__links a.wipe {
+  background-position: left calc(50% + 0.75em);
+}
+
+/* Below 860px the links collapse behind the Menu button. */
+@media (max-width: 860px) {
+  .site-nav__end {
+    display: flex;
+  }
+
   .site-nav__toggle {
-    display: inline-block;
+    display: inline-flex;
   }
 
   .site-nav__links {
     display: none;
+    order: 3;
     flex-basis: 100%;
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
+    padding-bottom: var(--space-2);
   }
 
   .site-nav__links[data-open="true"] {
@@ -323,40 +418,61 @@ main:focus,
   }
 
   .site-nav__links a {
-    display: block;
-    padding-block: 0.75rem;
-    border-bottom: 1px solid var(--navy-line);
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav__links a.site-nav__cta {
+    justify-content: center;
+    margin-top: var(--space-2);
+  }
+
+  .theme-toggle {
+    gap: 0.6rem;
+    margin-top: var(--space-2);
+    padding-inline: 1rem;
+  }
+
+  .theme-toggle__label {
+    position: static;
+    width: auto;
+    height: auto;
+    clip: auto;
   }
 }
 
-/* ---------- Footer / contact ---------- */
+/* ---------- Footer / contact ----------
+ * A soft tone shift from the page into the surface colour, then one large
+ * statement with the email address as the main action.
+ */
 .site-footer {
-  margin-top: var(--space-xl);
-  padding-block: var(--space-xl) var(--space-l);
-  background: var(--teal);
-  color: var(--white);
+  margin-top: var(--space-6);
+  padding-block: clamp(3rem, 7vw, 6rem) var(--space-4);
+  background: linear-gradient(to bottom, var(--bg), var(--surface) 14rem);
+  color: var(--text);
+  border-top: 1px solid var(--border);
 }
 
 .site-footer h2 {
-  margin-bottom: var(--space-s);
-  font-size: var(--step-3);
+  margin: 0 0 var(--space-3);
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
 }
 
 .site-footer__invite {
+  max-width: 40ch;
   font-size: var(--step-1);
   line-height: 1.5;
-  color: #e3f3f1; /* 7.2:1 on teal */
-}
-
-.site-footer :focus-visible {
-  outline-color: var(--white);
+  color: var(--text-muted);
 }
 
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-s);
-  margin: var(--space-l) 0;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin: var(--space-5) 0 var(--space-6);
   padding: 0;
   list-style: none;
 }
@@ -365,15 +481,9 @@ main:focus,
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.8rem 1.4rem;
-  border: 2px solid var(--white);
-  border-radius: 999px;
+  min-height: 44px;
   font-weight: 700;
   text-decoration: none;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
 }
 
 .contact-link svg {
@@ -383,43 +493,73 @@ main:focus,
 }
 
 .contact-link--primary {
-  background: var(--white);
-  color: var(--teal);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  color: var(--accent);
+}
+
+.contact-link__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contact-link__address {
+  font-size: clamp(1.5rem, 4.4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .contact-link--secondary {
-  background: transparent;
-  color: var(--white);
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.contact-link:hover {
-  border-color: var(--gold-on-dark);
-  box-shadow: 0 0 0 2px var(--gold-on-dark);
-  text-decoration: underline 2px var(--gold-on-dark);
-  text-underline-offset: 0.3em;
+.contact-link--secondary:hover {
+  border-color: var(--accent);
+  background: var(--bg);
 }
 
 .site-footer__legal {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-xs) var(--space-m);
   max-width: none;
   margin: 0;
-  padding-top: var(--space-m);
-  border-top: 1px solid rgb(255 255 255 / 0.3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
   font-size: 0.9rem;
-  color: #e3f3f1;
+  color: var(--text-muted);
 }
 
 .site-footer__legal a {
-  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 44px;
+  color: var(--text);
   font-weight: 700;
+  background-position: left calc(50% + 0.75em);
 }
 
-.site-footer__legal a:hover {
-  text-decoration-color: var(--gold-on-dark);
-  text-decoration-thickness: 2px;
+.contact-link__address.wipe {
+  background-size: 0 2px;
+}
+
+.contact-link--primary:hover .contact-link__address,
+.contact-link--primary:focus-visible .contact-link__address {
+  background-size: 100% 2px;
 }
 
 /* ---------- Simple text pages (About, 404) ---------- */
@@ -486,8 +626,8 @@ main:focus,
   bottom: var(--space-xs);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  background: var(--navy);
-  color: var(--white);
+  background: var(--inverse-bg);
+  color: var(--inverse-text);
   font-size: 0.8rem;
   font-weight: 700;
   opacity: 0.85;
@@ -551,7 +691,7 @@ main:focus,
   align-items: center;
   gap: var(--space-s);
   padding: var(--space-xs) var(--space-s);
-  background: var(--navy);
+  background: var(--inverse-bg);
 }
 
 .zoom-viewer__bar a,

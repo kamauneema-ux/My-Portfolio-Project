@@ -14,17 +14,20 @@ export default function SiteFooter() {
               href={`mailto:${profile.email}`}
               className="contact-link contact-link--primary"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m3 7 9 6 9-6" />
-              </svg>
-              Email Grace
+              <span className="contact-link__label">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                Email Grace
+              </span>
+              <span className="contact-link__address wipe">{profile.email}</span>
             </a>
           </li>
           <li>
@@ -47,7 +50,7 @@ export default function SiteFooter() {
             &copy; {new Date().getFullYear()} {profile.name} &middot;{" "}
             {profile.location}
           </span>
-          <a href="#main-content">
+          <a href="#main-content" className="wipe">
             Back to top<span aria-hidden="true"> &uarr;</span>
           </a>
         </p>

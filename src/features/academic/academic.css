@@ -12,6 +12,21 @@
   --ac-body: #4b5a50;
   --ac-max: 76rem;
 
+  /* This section keeps its own light theme whatever the site theme is. */
+  color-scheme: light;
+  --bg: #f6f4ef;
+  --surface: #ece8df;
+  --text: #1a1e1b;
+  --text-muted: #545b55;
+  --accent: #1b6b47;
+  --on-accent: #ffffff;
+  --border: rgb(26 30 27 / 0.14);
+  --gold: #b8860b; /* hover cue, non-text, 3.09:1 */
+  --navy: #1a1e1b;
+  --teal: #1b6b47;
+  --muted: #545b55;
+  --line: rgb(26 30 27 / 0.14);
+
   min-height: 100vh;
   background: var(--ac-bg);
   color: var(--ac-ink);

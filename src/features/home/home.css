@@ -1,108 +1,128 @@
 /*
- * Home page in the editorial language of Academic and Creative Projects,
- * in the professional palette: ruled uppercase eyebrows, an oversized
- * headline with a serif italic accent, numbered cards and hairline rules.
+ * Home page. Typography carries the design: one oversized statement, then the
+ * three case studies as full-width rows. Sections meet through tone shifts
+ * between --bg and --surface rather than hard colour blocks.
+ * Mobile first; the 12-column grid starts at 768px.
  */
 
 .home-hero em,
 .home-work em,
+.home-academic em,
 .home-epilogue em {
   font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 400;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .home-eyebrow {
   max-width: none;
-  margin: 0 0 var(--space-s);
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--text-muted);
 }
 
-.home-eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 2rem;
-  height: 1px;
-  margin-right: 0.75rem;
-  vertical-align: middle;
-  background: currentColor;
+/* 12-column grid; children span the full width until a breakpoint places them. */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
 }
 
-.home-eyebrow--on-dark {
-  color: var(--teal-on-dark);
+.home-grid > * {
+  grid-column: 1 / -1;
 }
 
 .home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
   font-weight: 700;
-  color: var(--navy);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-}
-
-.home-link:hover {
-  border-bottom-color: var(--gold);
-  box-shadow: 0 2px 0 var(--gold);
+  color: var(--accent);
+  background-position: left calc(50% + 0.75em);
 }
 
 /* ---------- Hero ---------- */
 .home-hero {
-  padding-block: var(--space-l) var(--space-m);
+  padding-block: var(--space-5) var(--space-4);
 }
 
 .home-hero__byline {
   display: flex;
   align-items: center;
-  gap: var(--space-s);
-  margin-bottom: var(--space-m);
-}
-
-.home-hero__byline .home-eyebrow {
-  margin: 0;
-}
-
-.home-hero__split {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  align-items: end;
-  gap: clamp(1.5rem, 5vw, 4.5rem);
-}
-
-.home-hero h1 {
-  max-width: 14ch;
-  margin: 0;
-  font-size: clamp(2.4rem, 5vw, 4.1rem);
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  gap: var(--space-2);
 }
 
 .home-hero__portrait {
   flex: none;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: cover;
   object-position: center 20%;
   border-radius: 50%;
 }
 
+.home-hero__title {
+  max-width: 15em;
+  margin: var(--space-3) 0 0;
+  font-size: var(--step-display);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
 .home-hero__lead {
-  margin: 0;
+  margin: var(--space-3) 0 0;
   font-size: var(--step-1);
   line-height: 1.5;
-  color: var(--muted);
+  color: var(--text-muted);
+}
+
+.home-hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: start;
+  min-height: 44px;
+  margin-top: var(--space-2);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.home-hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 2.25rem;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.home-hero__scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: top;
+}
+
+.home-hero__scroll:hover {
+  color: var(--accent);
 }
 
 .home-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-m);
-  margin: var(--space-l) 0 0;
-  padding-top: var(--space-s);
-  border-top: 1px solid var(--line);
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
 }
 
 .home-facts dt {
@@ -110,7 +130,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--text-muted);
 }
 
 .home-facts dd {
@@ -119,33 +139,181 @@
   line-height: 1.4;
 }
 
+/* Staggered entrance on load; finishes within a second. */
+@keyframes home-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+/* The scroll cue's line fills three times, then rests (under five seconds). */
+@keyframes home-scroll-cue {
+  0% {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  61% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    animation: home-enter 0.7s var(--ease-out) both;
+  }
+
+  .enter--2 {
+    animation-delay: 0.08s;
+  }
+
+  .enter--3 {
+    animation-delay: 0.16s;
+  }
+
+  .enter--4 {
+    animation-delay: 0.24s;
+  }
+
+  .home-hero__scroll-line::after {
+    animation: home-scroll-cue 1.6s var(--ease-out) 1s 3 both;
+  }
+}
+
 /* ---------- Selected work ---------- */
 .home-work {
-  padding-block: var(--space-l) var(--space-xl);
-  border-top: 1px solid var(--line);
+  padding-block: var(--space-5) var(--space-section);
+}
+
+.home-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  padding-bottom: var(--space-3);
 }
 
 .home-section-head h2,
 .home-academic h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.04em;
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.045em;
 }
 
-.home-section-head h2 {
-  margin-bottom: 0;
+.work-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-list > li {
+  border-top: 1px solid var(--border);
+}
+
+.work-list > li:last-child {
+  border-bottom: 1px solid var(--border);
 }
 
 .work-card {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  row-gap: var(--space-3);
+  margin-inline: calc(var(--space-2) * -1);
+  padding: var(--space-4) var(--space-2);
+  border-radius: var(--radius-l);
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s ease;
 }
 
-/* Images sit on a pale artboard so diagrams are shown whole, never cropped. */
+.work-card > * {
+  grid-column: 1 / -1;
+}
+
+.work-card__number {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.work-card h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-decoration: underline 2px transparent;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.work-card__summary {
+  margin: var(--space-2) 0 0;
+  color: var(--text-muted);
+}
+
+.work-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-card__tags li {
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.work-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin-top: var(--space-2);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* The one link covers the whole row, so the image and headline are clickable. */
+.work-card__cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.work-card__arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--ease-out);
+}
+
+/* Images sit whole on a panel one tone off the page, never cropped. */
 .work-card__media {
   position: relative;
   aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
   background: var(--surface);
-  border-radius: 4px;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .work-card__media img {
@@ -153,202 +321,199 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  padding: clamp(0.75rem, 3vw, 2rem);
+  padding: clamp(0.75rem, 3vw, 1.75rem);
   object-fit: contain;
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform 0.6s var(--ease-out);
 }
 
-.work-card__row {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-s);
-  max-width: none;
-  margin: var(--space-m) 0 0;
-  padding-top: var(--space-s);
-  border-top: 1px solid var(--line);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--teal);
+.work-card:hover {
+  background: var(--surface);
 }
 
-.work-card h3 {
-  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
-  letter-spacing: -0.03em;
+.work-card:hover .work-card__media {
+  background: var(--bg);
 }
 
-.work-card__summary {
-  color: var(--muted);
+.work-card:hover h3 {
+  text-decoration-color: var(--accent);
 }
 
-.work-card__cta {
-  display: inline-block;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid currentColor;
-  color: var(--navy);
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
+.work-card:hover .work-card__arrow {
+  transform: translateX(6px);
 }
 
-/* The one link covers the whole card, so the image and headline are clickable. */
-.work-card__cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+@media (hover: hover) {
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .work-card:hover .work-card__media img {
+    transform: scale(1.03);
+  }
 }
 
-/* Show the focus ring around the whole card the link now covers. */
+/* The focus ring outlines the whole row the link covers. */
 @supports selector(:has(*)) {
   .work-card__cta:focus-visible {
     outline: none;
   }
 
   .work-card:has(.work-card__cta:focus-visible) {
-    outline: 3px solid var(--teal);
-    outline-offset: 6px;
-    border-radius: 4px;
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
   }
 }
 
-.work-card:hover h3 {
-  text-decoration: underline 2px var(--gold);
-  text-underline-offset: 0.2em;
-}
-
-.work-card:hover .work-card__cta {
-  border-bottom-color: var(--gold);
-  box-shadow: 0 2px 0 var(--gold);
-}
-
-@media (hover: hover) {
-  .work-card:hover .work-card__media img {
-    transform: scale(1.04);
-  }
-}
-
-.work-card--featured {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  align-items: center;
-  gap: var(--space-l);
-  margin-top: var(--space-m);
-}
-
-.work-card--featured .work-card__row {
-  margin-top: 0;
-}
-
-.work-card--featured .work-card__media {
-  aspect-ratio: 16 / 9;
-}
-
-.work-card--featured h3 {
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
-}
-
-.work-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl) var(--space-l);
-  margin-top: var(--space-xl);
-}
-
-/* ---------- Academic and Creative Projects band ---------- */
+/* ---------- Academic and Creative Projects ---------- */
 .home-academic {
-  padding-block: var(--space-xl);
-  background: var(--navy);
-  color: var(--white);
+  padding-block: var(--space-section);
+  background: linear-gradient(
+    to bottom,
+    var(--bg),
+    var(--surface) 22%,
+    var(--surface) 78%,
+    var(--bg)
+  );
 }
 
 .home-academic__grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  row-gap: var(--space-4);
   align-items: center;
-  gap: var(--space-l);
 }
 
-.home-academic img {
+.home-academic__poster {
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--radius-l);
 }
 
-.home-academic em {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  color: var(--teal-on-dark);
+.home-academic__text h2 {
+  margin: var(--space-2) 0;
 }
 
-.home-academic p:not(.home-eyebrow) {
-  color: #dbe5ec; /* about 11:1 on navy */
-}
-
-.home-academic :focus-visible {
-  outline-color: var(--teal-on-dark);
+.home-academic__text p:not(.home-eyebrow) {
+  color: var(--text-muted);
 }
 
 .home-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: var(--space-s);
+  gap: 0.75rem;
+  min-height: 44px;
+  margin-top: var(--space-2);
   padding: 0.75rem 1.4rem;
-  border: 1px solid var(--teal-on-dark);
+  border: 1px solid var(--accent);
   border-radius: 999px;
-  color: var(--white);
+  color: var(--accent);
   font-weight: 700;
   text-decoration: none;
   transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.home-pill__arrow {
+  transition: transform 0.3s var(--ease-out);
 }
 
 .home-pill:hover {
-  border-color: var(--gold-on-dark);
-  box-shadow: 0 0 0 1px var(--gold-on-dark);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.home-pill:hover .home-pill__arrow {
+  transform: translateX(4px);
 }
 
 /* ---------- Closing line ---------- */
 .home-epilogue {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr;
-  align-items: center;
-  gap: var(--space-l);
-  padding-top: var(--space-xl);
-}
-
-.home-epilogue .home-eyebrow {
-  margin: 0;
+  row-gap: var(--space-2);
+  align-items: baseline;
+  padding-top: var(--space-section);
 }
 
 .home-epilogue__text {
+  max-width: 22ch;
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  line-height: 1.2;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
 }
 
-/* As a grid item the link would stretch, carrying its underline across the column. */
 .home-epilogue .home-link {
   justify-self: start;
 }
 
-@media (max-width: 760px) {
-  .home-hero__split,
-  .home-facts,
-  .work-card--featured,
-  .work-pair,
-  .home-academic__grid,
-  .home-epilogue {
-    grid-template-columns: 1fr;
-  }
-
+/* ---------- 768px and up ---------- */
+@media (min-width: 768px) {
   .home-facts {
-    gap: var(--space-s);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
   }
 
-  .home-epilogue {
-    gap: var(--space-s);
+  .home-hero__lead {
+    grid-column: 1 / span 8;
+  }
+
+  .home-hero__scroll {
+    grid-column: 10 / -1;
+    grid-row: 3;
+    justify-self: end;
+    align-self: end;
+  }
+
+  .work-card__number {
+    grid-column: 1 / span 1;
+  }
+
+  .work-card__body {
+    grid-column: 2 / -1;
+  }
+
+  .work-card__media {
+    grid-column: 2 / -1;
+  }
+
+  .home-academic__poster {
+    grid-column: 1 / span 7;
+  }
+
+  .home-academic__text {
+    grid-column: 8 / -1;
+  }
+
+  .home-epilogue .home-eyebrow {
+    grid-column: 1 / span 3;
+  }
+
+  .home-epilogue__text {
+    grid-column: 4 / -1;
+  }
+
+  .home-epilogue .home-link {
+    grid-column: 4 / -1;
+  }
+}
+
+/* ---------- 1024px and up: text and image side by side ---------- */
+@media (min-width: 1024px) {
+  .work-card {
+    align-items: center;
+    padding: var(--space-4) var(--space-3);
+    margin-inline: calc(var(--space-3) * -1);
+  }
+
+  .work-card__number {
+    align-self: start;
+    padding-top: 0.6rem;
+  }
+
+  .work-card__body {
+    grid-column: 2 / span 5;
+  }
+
+  .work-card__media {
+    grid-column: 7 / -1;
   }
 }
