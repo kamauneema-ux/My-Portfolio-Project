@@ -59,7 +59,7 @@ export default function ZoomableFigure({
         onClick={openViewer}
         aria-haspopup="dialog"
         // One label that includes the description, so it is not announced twice.
-        aria-label={`Open full size image: ${alt}`}
+        aria-label={`View full size image: ${alt}`}
       >
         <img
           src={src}

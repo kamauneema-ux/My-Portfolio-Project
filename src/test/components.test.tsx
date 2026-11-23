@@ -18,7 +18,7 @@ describe("ZoomableFigure", () => {
     const user = userEvent.setup();
     render(<ZoomableFigure {...props} />);
     const trigger = screen.getByRole("button", {
-      name: /open full size image: staff journey/i,
+      name: /view full size image: staff journey/i,
     });
 
     await user.click(trigger);
