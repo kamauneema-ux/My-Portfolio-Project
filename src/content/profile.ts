@@ -10,7 +10,7 @@ export const profile = {
 } as const;
 
 export const hero = {
-  disciplines: "Service Design · User Design · Product Design · UX Research",
+  disciplines: "Service Design · User Experience · Product Design · UX Research",
   headline: {
     lead: "I design the services behind",
     accent: "everyday transactions.",

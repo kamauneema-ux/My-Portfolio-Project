@@ -63,7 +63,10 @@ export default function PersonalReflection() {
         </div>
       </div>
 
-      <section className="ac-wrap ac-next ac-next--ruled" aria-labelledby="pair-title">
+      <section
+        className="ac-wrap ac-next ac-next--ruled"
+        aria-labelledby="pair-title"
+      >
         <div>
           <p className="ac-eyebrow">Two sides of one project</p>
           <h2 id="pair-title">

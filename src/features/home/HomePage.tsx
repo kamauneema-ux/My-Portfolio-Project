@@ -17,7 +17,13 @@ const projects = [featuredProject, ...supportingProjects];
  * One full-width project row. The call to action is the row's only link; its
  * ::after stretches over the row so the image and text are clickable too.
  */
-function WorkCard({ project, number }: { project: ProjectCard; number: number }) {
+function WorkCard({
+  project,
+  number,
+}: {
+  project: ProjectCard;
+  number: number;
+}) {
   const { image } = project;
   return (
     <article className="work-card">
@@ -78,7 +84,10 @@ export default function HomePage() {
             {hero.headline.lead} <em>{hero.headline.accent}</em>
           </h1>
           <p className="home-hero__lead enter enter--3">{hero.intro}</p>
-          <a href={`#${anchors.work}`} className="home-hero__scroll enter enter--4">
+          <a
+            href={`#${anchors.work}`}
+            className="home-hero__scroll enter enter--4"
+          >
             <span className="home-hero__scroll-line" aria-hidden="true" />
             Scroll<span className="visually-hidden"> to selected work</span>
           </a>
@@ -89,7 +98,9 @@ export default function HomePage() {
             </div>
             <div>
               <dt>Studying</dt>
-              <dd>MSc Interaction and Experience Design, University of Limerick</dd>
+              <dd>
+                MSc Interaction and Experience Design, University of Limerick
+              </dd>
             </div>
             <div>
               <dt>Previously</dt>
@@ -110,7 +121,9 @@ export default function HomePage() {
             <h2 id="work-title">
               Selected <em>work.</em>
             </h2>
-            <p className="home-eyebrow">Case studies / Telecommunications and fintech</p>
+            <p className="home-eyebrow">
+              Case studies / Telecommunications and fintech
+            </p>
           </div>
           <ol className="work-list">
             {projects.map((project, index) => (
@@ -137,7 +150,9 @@ export default function HomePage() {
             <h2 id="creative-title">
               Academic and <em>Creative Projects.</em>
             </h2>
-            <p>Cheetah Perfume, a short advertisement made with my MSc group.</p>
+            <p>
+              Cheetah Perfume, a short advertisement made with my MSc group.
+            </p>
             <Link to={routes.academic} className="home-pill">
               View Academic and Creative Projects
               <span className="home-pill__arrow" aria-hidden="true">

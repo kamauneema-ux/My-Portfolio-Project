@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 type Theme = "light" | "dark";
 
 const systemTheme = (): Theme =>
-  window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  window.matchMedia?.("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 
 /** Light/dark theme: starts from the saved choice or the system, and remembers changes. */
 export default function useTheme() {

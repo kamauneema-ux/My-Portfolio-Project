@@ -6,7 +6,10 @@ import BlockList from "./BlockList";
 import useActiveSection from "./useActiveSection";
 
 const sectionIds = groupProduction.sections.map((section) => section.id);
-const referencesNumber = String(sectionIds.indexOf("references") + 1).padStart(2, "0");
+const referencesNumber = String(sectionIds.indexOf("references") + 1).padStart(
+  2,
+  "0",
+);
 const { referenceList } = groupProduction;
 
 /**
@@ -104,22 +107,22 @@ export default function GroupProduction() {
             {groupProduction.sections
               .filter((section) => section.id !== "references")
               .map((section, index) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="ac-report-section"
-                aria-labelledby={`${section.id}-title`}
-              >
-                <div className="ac-rail" aria-hidden="true">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span className="ac-rail__rule" />
-                </div>
-                <div>
-                  <h3 id={`${section.id}-title`}>{section.title}</h3>
-                  <BlockList blocks={section.blocks} />
-                </div>
-              </section>
-            ))}
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className="ac-report-section"
+                  aria-labelledby={`${section.id}-title`}
+                >
+                  <div className="ac-rail" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <span className="ac-rail__rule" />
+                  </div>
+                  <div>
+                    <h3 id={`${section.id}-title`}>{section.title}</h3>
+                    <BlockList blocks={section.blocks} />
+                  </div>
+                </section>
+              ))}
           </div>
         </div>
 
@@ -135,7 +138,12 @@ export default function GroupProduction() {
           </h3>
           <div className="ac-refs__card">
             <span className="ac-refs__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
                 <path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z" />
                 <path d="M14 3v5h5M8 9h3M8 12.5h5" />
                 <path d="M16 13v4.2" />
@@ -158,11 +166,20 @@ export default function GroupProduction() {
               href={referenceList.file}
               download={referenceList.fileName}
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
                 <path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />
               </svg>
               Download references
-              <span className="visually-hidden"> ({referenceList.details})</span>
+              <span className="visually-hidden">
+                {" "}
+                ({referenceList.details})
+              </span>
             </a>
           </div>
         </section>

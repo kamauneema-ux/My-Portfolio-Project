@@ -71,8 +71,13 @@ describe("routing", () => {
 
   it("offers the group's media reference list as a download", async () => {
     renderAt("/academic-projects/group-production");
-    const link = await screen.findByRole("link", { name: /download references/i });
-    expect(link).toHaveAttribute("download", "Cheetah-Media-Reference-List.pdf");
+    const link = await screen.findByRole("link", {
+      name: /download references/i,
+    });
+    expect(link).toHaveAttribute(
+      "download",
+      "Cheetah-Media-Reference-List.pdf",
+    );
     expect(link.getAttribute("href")).toMatch(/\.pdf$/);
   });
 

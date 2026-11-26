@@ -9,7 +9,8 @@ type Group = { text: string; figures: Figure[] };
 function groupByParagraph(blocks: readonly Block[]): Group[] {
   const groups: Group[] = [];
   for (const block of blocks) {
-    if (block.type === "paragraph") groups.push({ text: block.text, figures: [] });
+    if (block.type === "paragraph")
+      groups.push({ text: block.text, figures: [] });
     else groups[groups.length - 1]?.figures.push(block.figure);
   }
   return groups;

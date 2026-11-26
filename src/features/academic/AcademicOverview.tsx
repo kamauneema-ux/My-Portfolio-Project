@@ -91,7 +91,8 @@ export default function AcademicOverview() {
           {overview.practice.lead} <em>{overview.practice.focus}</em>
         </p>
         <Link to={routes.home} className="ac-link">
-          Return to the professional portfolio <span aria-hidden="true">&#8599;</span>
+          Return to the professional portfolio{" "}
+          <span aria-hidden="true">&#8599;</span>
         </Link>
       </section>
     </>

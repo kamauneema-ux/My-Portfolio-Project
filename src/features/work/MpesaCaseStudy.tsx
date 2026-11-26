@@ -95,7 +95,9 @@ export default function MpesaCaseStudy() {
       </Disclosure>
 
       <section className="case__section" aria-labelledby="stalled-activation">
-        <h2 id="stalled-activation">Investigating stalled app activation abroad</h2>
+        <h2 id="stalled-activation">
+          Investigating stalled app activation abroad
+        </h2>
         <ZoomableFigure
           src={stalledActivation}
           width={1536}

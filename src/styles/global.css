@@ -34,7 +34,9 @@ body {
   color: var(--text);
   font: var(--step-0) / 1.6 var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 h1,
@@ -337,7 +339,9 @@ main:focus,
   border-radius: 999px;
   background: none;
   color: var(--accent);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .site-nav__links a.site-nav__cta:hover {
@@ -361,7 +365,9 @@ main:focus,
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .site-nav__toggle:hover,
@@ -448,7 +454,12 @@ main:focus,
 .site-footer {
   margin-top: var(--space-6);
   padding-block: clamp(3rem, 7vw, 6rem) var(--space-4);
-  background: linear-gradient(to bottom, var(--bg), var(--tint) 12rem, var(--tint-deep));
+  background: linear-gradient(
+    to bottom,
+    var(--bg),
+    var(--tint) 12rem,
+    var(--tint-deep)
+  );
   color: var(--text);
   border-top: 1px solid var(--border);
 }
@@ -524,7 +535,9 @@ main:has(.home-epilogue-band) + .site-footer {
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--text);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .contact-link--secondary:hover {
